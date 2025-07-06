@@ -32,7 +32,8 @@ h1, h2, h3, h4 {
 
 h1 { font-size: 3rem; }
 h2 { font-size: 2.2rem; }
-p.lead { font-size: 1.2rem; color: var(--medium-grey); }
+h3 { font-size: 1.5rem; }
+p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-left: auto; margin-right: auto;}
 
 .section-padding { padding: 60px 0; }
 .section-padding-light { padding: 60px 0; background-color: var(--light-grey); }
@@ -55,7 +56,7 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); }
 }
 
 .logo img {
-    max-height: 50px; /* Pas hoogte aan indien nodig */
+    max-height: 50px;
     width: auto;
 }
 
@@ -80,7 +81,7 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); }
     color: var(--primary-color);
 }
 
-/* Hero Sectie */
+/* Hero Sectie (Homepage) */
 .hero {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1500x700.png?text=Inspirerende+Foto+van+Wageningen');
     background-size: cover;
@@ -96,6 +97,14 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); }
 .hero-content { max-width: 800px; }
 .hero h1 { color: var(--white); margin-bottom: 20px; }
 
+/* Algemene Paginatitel Sectie */
+.page-title-section {
+    padding: 40px 0;
+    background-color: var(--light-grey);
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
 /* Knoppen */
 .btn {
     display: inline-block;
@@ -105,13 +114,15 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); }
     font-weight: 700;
     transition: all 0.3s ease;
     text-transform: uppercase;
+    border: none;
+    cursor: pointer;
 }
 .btn-primary { background-color: var(--primary-color); color: var(--white); }
-.btn-primary:hover { background-color: #a00000; /* Iets donkerder rood */ }
+.btn-primary:hover { background-color: #a00000; }
 .btn-light { background-color: var(--white); color: var(--primary-color); }
 .btn-light:hover { background-color: var(--light-grey); }
 
-/* Grid & Cards (voor Standpunten en Nieuws) */
+/* Grid & Cards (voor Standpunten en Nieuws op Homepage) */
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 .card {
     background: var(--white);
@@ -122,17 +133,13 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); }
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
-/* --- CSS voor Team Sectie --- */
 
-/* Grid specifiek voor het team van 4 personen */
+/* Team Sectie (4 kolommen) */
 .team-grid {
     display: grid;
-    /* Op desktop: 4 kolommen */
     grid-template-columns: repeat(4, 1fr); 
     gap: 30px;
 }
-
-/* Stijl voor de teamkaart */
 .team-card {
     background: var(--white);
     padding: 20px;
@@ -141,49 +148,34 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); }
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .team-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    border-color: #c50000;
+    border-color: var(--primary-color);
 }
-
-/* Stijl voor de afbeeldingen van teamleden */
 .team-card img {
-    width: 150px;       /* Vaste breedte */
-    height: 150px;      /* Vaste hoogte */
-    border-radius: 50%; /* Maakt de afbeelding rond */
-    object-fit: cover;  /* Zorgt dat de foto mooi past, zonder vervorming */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
     margin-bottom: 15px;
     border: 3px solid var(--light-grey);
 }
-
 .team-card h3 {
     margin-bottom: 5px;
     font-size: 1.4rem;
 }
-
 .team-card p {
     color: var(--medium-grey);
     font-weight: 700;
 }
 
-/* --- Responsive aanpassingen voor de Team Sectie --- */
-
-/* Tablet weergave: 2 kolommen */
-@media (max-width: 992px) {
-    .team-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* Nieuws Sectie & Pagina */
+.news-grid-full {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
 }
-
-/* Mobiele weergave: 1 kolom */
-@media (max-width: 576px) {
-    .team-grid {
-        grid-template-columns: 1fr;
-    }
-}
-/* Nieuws */
 .news-item {
     background: var(--white);
     border-radius: 8px;
@@ -191,12 +183,49 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); }
     border: 1px solid #eee;
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border-color: var(--primary-color);
 }
 .news-item img { width: 100%; height: 200px; object-fit: cover; }
 .news-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-.news-content h4 { margin-top: 0; }
+.news-content h4 { margin-top: 0; font-size: 1.3rem; }
 .news-content p { flex-grow: 1; }
 .news-content a { color: var(--primary-color); text-decoration: none; font-weight: 700; align-self: flex-start; }
+
+/* Contact Pagina */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: var(--medium-grey);
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: var(--font-family-body);
+    font-size: 1rem;
+}
+.contact-info-container h3 {
+    margin-top: 0;
+}
+.contact-info-container a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
 
 /* Call to Action (CTA) */
 .cta { background-color: var(--primary-color); color: var(--white); }
@@ -213,10 +242,24 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); }
 }
 .site-footer a { color: var(--white); text-decoration: none; }
 
-/* Responsive voor Mobiel */
+/* Responsive Media Queries */
+@media (max-width: 992px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
-    .main-nav { display: none; /* Voor mobiel heb je JavaScript nodig voor een hamburgermenu */ }
-    .grid { grid-template-columns: 1fr; }
+    .main-nav { display: none; /* JS nodig voor een hamburgermenu */ }
+    .grid, .news-grid-full { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 576px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
 }
