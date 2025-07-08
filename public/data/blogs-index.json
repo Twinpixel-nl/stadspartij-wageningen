@@ -1,0 +1,9 @@
+[
+  {
+    "title": "Welkom op de nieuwe blog!",
+    "date": "2024-05-21",
+    "excerpt": "Dit is een korte samenvatting van ons eerste bericht. Perfect voor de overzichtspagina.",
+    "thumbnail": "/images/blog/welkom.jpg",
+    "path": "/blogs/welkom.html"
+  }
+]
