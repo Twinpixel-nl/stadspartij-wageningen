@@ -342,3 +342,10 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
         grid-template-columns: 1fr;
     }
 }
+
+.news-grid-home {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-top: 2rem;
+}
