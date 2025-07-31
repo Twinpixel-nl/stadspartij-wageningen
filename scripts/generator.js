@@ -146,7 +146,7 @@ function createBlogHtmlPage(data, markdownContent, marked) {
     </div>
   </header>
 
-  <main class="container section-padding">
+<main class="container section-padding">
   <article class="blog-post">
     <h1>${data.title}</h1>
 
@@ -163,6 +163,7 @@ function createBlogHtmlPage(data, markdownContent, marked) {
     <a href="/nieuws.html" class="btn btn-light">← Terug naar overzicht</a>
   </article>
 </main>
+
 
 
   <footer class="site-footer">
