@@ -64,7 +64,7 @@
   </footer>
 
   <script>
-fetch('/data/raadsleden.json')
+fetch('/data/raadsleden-index.json')
   .then(res => {
     if (!res.ok) throw new Error('Response niet ok');
     return res.json();
