@@ -65,14 +65,59 @@ function createBlogHtmlPage(data, markdownContent, marked) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${data.title || "Blog"} - Stadspartij Wageningen</title>
   <meta name="description" content="${data.excerpt || data.title}" />
+  
+  <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
   <link rel="manifest" href="/images/favicon/site.webmanifest">
+
+  <!-- Fonts & Styles -->
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph (Facebook, LinkedIn) -->
+  <meta property="og:title" content="${data.title}" />
+  <meta property="og:description" content="${data.excerpt || data.title}" />
+  <meta property="og:image" content="${data.thumbnail || 'https://stadspartijwageningen.nl/images/logo.png'}" />
+  <meta property="og:url" content="https://stadspartijwageningen.nl${data.path || ''}" />
+  <meta property="og:type" content="article" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${data.title}" />
+  <meta name="twitter:description" content="${data.excerpt || data.title}" />
+  <meta name="twitter:image" content="${data.thumbnail || 'https://stadspartijwageningen.nl/images/logo.png'}" />
+
+  <!-- Structured Data (Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "${data.title}",
+    "description": "${data.excerpt || data.title}",
+    "image": "${data.thumbnail || 'https://stadspartijwageningen.nl/images/logo.png'}",
+    "author": {
+      "@type": "Organization",
+      "name": "Stadspartij Wageningen"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Stadspartij Wageningen",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://stadspartijwageningen.nl/images/logo.png"
+      }
+    },
+    "datePublished": "${formattedDate}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://stadspartijwageningen.nl${data.path || ''}"
+    }
+  }
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -102,14 +147,23 @@ function createBlogHtmlPage(data, markdownContent, marked) {
   </header>
 
   <main class="container section-padding">
-    <article class="blog-post">
-      <h1>${data.title}</h1>
-      <p class="meta">Gepubliceerd op ${formattedDate}</p>
-      ${data.thumbnail ? `<img src="${data.thumbnail}" alt="" class="blog-post-thumbnail">` : ''}
-      <div class="blog-post-content">${htmlContent}</div>
-      <a href="/nieuws.html" class="btn btn-light">← Terug naar overzicht</a>
-    </article>
-  </main>
+  <article class="blog-post">
+    <h1>${data.title}</h1>
+
+    ${data.thumbnail ? `
+    <div class="blog-post-header">
+      <img src="${data.thumbnail}" alt="" class="blog-post-thumbnail">
+      <div class="blog-post-info">
+        <p class="meta">Gepubliceerd op ${formattedDate}</p>
+      </div>
+    </div>
+    ` : `<p class="meta">Gepubliceerd op ${formattedDate}</p>`}
+
+    <div class="blog-post-content">${htmlContent}</div>
+    <a href="/nieuws.html" class="btn btn-light">← Terug naar overzicht</a>
+  </article>
+</main>
+
 
   <footer class="site-footer">
     <div class="container text-center">
@@ -121,7 +175,6 @@ function createBlogHtmlPage(data, markdownContent, marked) {
   <script src="/js/main.js"></script>
 </body>
 </html>`;
-
 }
 
 /**

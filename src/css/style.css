@@ -349,3 +349,24 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   margin-top: 2rem;
 }
+
+.blog-post-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.blog-post-thumbnail {
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.blog-post-info {
+  flex: 1;
+  min-width: 250px;
+}
