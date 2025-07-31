@@ -61,33 +61,67 @@ function createBlogHtmlPage(data, markdownContent, marked) {
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${data.title || "Blog"} - Stadspartij Wageningen</title>
-    <meta name="description" content="${data.excerpt || data.title}">
-    <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${data.title || "Blog"} - Stadspartij Wageningen</title>
+  <meta name="description" content="${data.excerpt || data.title}" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <!-- PLAK HIER JE HEADER HTML -->
-        <p>Placeholder Header</p>
-    </header>
-    <main class="container">
-        <article class="blog-post">
-            <h1>${data.title}</h1>
-            <p class="meta">Gepubliceerd op ${formattedDate}</p>
-            ${data.thumbnail ? `<img src="${data.thumbnail}" alt="" class="blog-post-thumbnail">` : ''}
-            <div class="blog-post-content">${htmlContent}</div>
-            <a href="/nieuws.html">← Terug naar overzicht</a>
-        </article>
-    </main>
-    <footer>
-        <!-- PLAK HIER JE FOOTER HTML -->
-        <p>Placeholder Footer</p>
-    </footer>
-    <script src="/js/main.js"></script>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <a href="/index.html"><img src="/images/logo.png" alt="Logo Stadspartij Wageningen" /></a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/nieuws.html" class="active">Nieuws</a></li>
+          <li class="dropdown">
+            <a href="#" class="drop-btn">Verkiezingen</a>
+            <div class="dropdown-content">
+              <a href="/samenvatting-verkiezingsprogramma.html">Samenvatting Programma</a>
+              <a href="/verkiezingsprogramma-compleet.html">Volledig Programma</a>
+              <a href="/kieslijst.html">Kieslijst</a>
+              <a href="/stellingen-stemwijzer.html">Stellingen Stemwijzer</a>
+              <a href="/stellingen-mijnstem.html">Stellingen MijnStem</a>
+            </div>
+          </li>
+          <li><a href="/fractie.html">Fractie</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section-padding">
+    <article class="blog-post">
+      <h1>${data.title}</h1>
+      <p class="meta">Gepubliceerd op ${formattedDate}</p>
+      ${data.thumbnail ? `<img src="${data.thumbnail}" alt="" class="blog-post-thumbnail">` : ''}
+      <div class="blog-post-content">${htmlContent}</div>
+      <a href="/nieuws.html" class="btn btn-light">← Terug naar overzicht</a>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container text-center">
+      <p>© 2025 Stadspartij Wageningen – Lokaal en Betrokken</p>
+      <p>Website door <strong><a href="https://twinpixel.nl" target="_blank" rel="noopener noreferrer">TwinPixel</a></strong></p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
 </body>
 </html>`;
+
 }
 
 /**
