@@ -1,6 +1,6 @@
 ---
 title: Schuiven met kwetsbare werknemers
-date: 2025-01-01T12:55:58.427Z
+date: 2025-02-01T13:01:17.690Z
 thumbnail: /images/uploads/screenshot-2025-07-31-135923.png
 excerpt: De Stadspartij maakt zich zorgen over de gedwongen overstap van
   Werkpunt-medewerkers naar IW4 in Veenendaal en stelt vragen over de gebrekkige
