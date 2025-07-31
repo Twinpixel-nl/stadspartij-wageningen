@@ -41,7 +41,6 @@ collections:
     create: true
     slug: "{{fields.naam | slugify}}"
     fields:
-      - { label: "Titel", name: "title", widget: "string" } 
       - { label: "Naam", name: "naam", widget: "string" }
       - {
           label: "Rol",
