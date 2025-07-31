@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="nl">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     <title>Stadspartij Wageningen - Lokaal en Betrokken</title>
- <link rel="apple-touch-icon" sizes="180x180" href="/stadspartij-wageningen/src/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/stadspartij-wageningen/src/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/stadspartij-wageningen/">
-    <link rel="manifest" href="/stadspartij-wageningen/src/images/favicon/site.webmanifest">
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../images/favicon/site.webmanifest">
+    <link rel="stylesheet" href="css/style.css" >
+    <link rel="preconnect" href="https://fonts.googleapis.com" >
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
     <link
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Lato:wght@400;700&display=swap"
       rel="stylesheet"
-    />
+    >
   </head>
   <body>
     <header class="site-header">
@@ -22,7 +22,7 @@
         <div class="logo">
           <a href="index.html"
             ><img src="images/logo.png" alt="Logo Stadspartij Wageningen"
-          /></a>
+          ></a>
         </div>
         <nav class="main-nav">
           <ul>
@@ -84,56 +84,15 @@
         </div>
       </section>
 
-      <!-- AANGEPAST: Nieuws Sectie met content van de live website -->
-      <section class="nieuws-sectie section-padding-light">
-        <div class="container">
-          <h2 class="section-title">Laatste Nieuws</h2>
-          <div class="grid">
-            <article class="news-item">
-              <img
-                src="https://via.placeholder.com/400x250.png?text=Nieuwsfoto"
-                alt="Nieuwsbericht 1"
-              />
-              <div class="news-content">
-                <h4>Kennismaken en keuzes maken.</h4>
-                <p>
-                  Sinds kort ben ik steunfractielid van de Stadspartij. Ik heb
-                  me aangesloten omdat deze partij écht lokaal is...
-                </p>
-                <a href="#">Lees meer →</a>
-              </div>
-            </article>
-            <article class="news-item">
-              <img
-                src="https://via.placeholder.com/400x250.png?text=Nieuwsfoto"
-                alt="Nieuwsbericht 2"
-              />
-              <div class="news-content">
-                <h4>Voorstellen Henk van Beek</h4>
-                <p>
-                  Mijn naam is Henk van de Beek, ik ben 67 jaar oud en ik woon
-                  voor het grootste gedeelte van mijn leven in Wageningen...
-                </p>
-                <a href="#">Lees meer →</a>
-              </div>
-            </article>
-            <article class="news-item">
-              <img
-                src="https://via.placeholder.com/400x250.png?text=Nieuwsfoto"
-                alt="Nieuwsbericht 3"
-              />
-              <div class="news-content">
-                <h4>Onze Raadsleden</h4>
-                <p>
-                  Onze #raadsleden op een rij 😉 #Stadspartij #Wageningen
-                  #Politiek...
-                </p>
-                <a href="#">Lees meer →</a>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+<section class="nieuws-home section-padding">
+  <div class="container">
+    <h2 class="section-title">Laatste Nieuws</h2>
+    <div class="news-grid-home" id="home-news-container">
+      <!-- Nieuwsitems komen hier -->
+    </div>
+  </div>
+</section>
+
 
       <!-- AANGEPAST: 'Onze Mensen' sectie met ruimte voor foto's en 4 kolommen -->
       <section class="team-section section-padding">
@@ -146,17 +105,17 @@
           <!-- Aangepaste grid voor 4 teamleden -->
           <div class="team-grid">
             <div class="team-card">
-              <img src="images/Klaas.webp" alt="Foto van Klaas de Weerd" />
+              <img src="images/Klaas.webp" alt="Foto van Klaas de Weerd" >
               <h3>Klaas de Weerd</h3>
               <p>Raadslid</p>
             </div>
             <div class="team-card">
-              <img src="images/Henk.webp" alt="Foto van Henk van Beek" />
+              <img src="images/Henk.webp" alt="Foto van Henk van Beek" >
               <h3>Henk van Beek</h3>
               <p>Raadslid</p>
             </div>
             <div class="team-card">
-              <img src="images/Rien.webp" alt="Foto van Rien Bor" />
+              <img src="images/Rien.webp" alt="Foto van Rien Bor" >
               <h3>Rien Bor</h3>
               <p>Fractievoorzitter / Raadslid</p>
             </div>
@@ -164,7 +123,7 @@
               <img
                 src="images/Otto.jpg"
                 alt="Foto van Marjolein van der Vlist"
-              />
+              >
               <h3>Otto Vleemingen</h3>
               <p>Raadslid</p>
             </div>
@@ -184,12 +143,36 @@
         </div>
       </section>
     </main>
+<footer class="site-footer">
+  <div class="container text-center">
+    <p>© 2025 Stadspartij Wageningen – Lokaal en Betrokken</p>
+    <p>Website door <strong><a href="https://twinpixel.nl" target="_blank" rel="noopener noreferrer">TwinPixel</a></strong></p>
+  </div>
+</footer>
 
-    <footer class="site-footer">
-      <div class="container">
-        <p>© 2025 Stadspartij Wageningen | Lokaal en Betrokken</p>
-        <p><a href="#">Privacybeleid</a> | <a href="#">Contact</a></p>
-      </div>
-    </footer>
+    <script>
+fetch('data/blogs-index.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('home-news-container');
+    const top3 = data.slice(0, 3); // Pak alleen de eerste drie
+
+    top3.forEach(item => {
+      container.innerHTML += `
+        <article class="news-item">
+          <img src="${item.thumbnail || 'https://via.placeholder.com/400x250'}" alt="${item.title}">
+          <div class="news-content">
+            <h4>${item.title}</h4>
+            <p>${item.excerpt}</p>
+            <a href="${item.path}">Lees meer →</a>
+          </div>
+        </article>`;
+    });
+  })
+  .catch(error => {
+    console.error('Fout bij laden nieuws op homepage:', error);
+  });
+</script>
+
   </body>
 </html>

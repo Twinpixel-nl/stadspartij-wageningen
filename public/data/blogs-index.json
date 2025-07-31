@@ -1,9 +1,37 @@
 [
   {
-    "title": "Welkom op de nieuwe blog!",
-    "date": "2024-05-21",
-    "excerpt": "Dit is een korte samenvatting van ons eerste bericht. Perfect voor de overzichtspagina.",
-    "thumbnail": "/images/blog/welkom.jpg",
-    "path": "/blogs/welkom.html"
+    "title": "Inkomenszekerheid: een zegen of een zorg?",
+    "date": "2025-02-25T13:12:56.065Z",
+    "excerpt": "De Stadspartij luidt de noodklok over de nieuwe inkomensregeling, die bij inwoners tot lagere vergoedingen en financiële tekorten leidt.",
+    "thumbnail": "/images/uploads/images.jpeg",
+    "path": "/blogs/inkomenszekerheid-een-zegen-of-een-zorg.html"
+  },
+  {
+    "title": "Bewegen: binnen en buiten, jong en oud",
+    "date": "2025-02-19T13:01:40.392Z",
+    "excerpt": "De Stadspartij steunt buitensportmaatregelen zoals afstandsmarkeringen, watertappunten en toegankelijke speeltoestellen, zodat iedereen levenslang kan sporten.",
+    "thumbnail": "/images/uploads/sports-tools_53876-138077-1571x1024.jpg",
+    "path": "/blogs/test-img.html"
+  },
+  {
+    "title": "Schuiven met kwetsbare werknemers",
+    "date": "2025-02-01T13:01:17.690Z",
+    "excerpt": "De Stadspartij maakt zich zorgen over de gedwongen overstap van Werkpunt-medewerkers naar IW4 in Veenendaal en stelt vragen over de gebrekkige begeleiding en het ontbrekende vervoer.",
+    "thumbnail": "/images/uploads/screenshot-2025-07-31-135923.png",
+    "path": "/blogs/schuiven-met-kwetsbare-werknemers.html"
+  },
+  {
+    "title": "Het gas erop",
+    "date": "2025-01-31T12:54:28.353Z",
+    "excerpt": "De Stadspartij hekelt loze verkiezingsbeloften van eerdere jaren en pleit voor echte daadkracht: van woningbouw tot isolatie – het gas moet erop.",
+    "thumbnail": "/images/uploads/electricity-4666566_1280-800x533.jpg",
+    "path": "/blogs/het-gas-erop.html"
+  },
+  {
+    "title": "3 ton voor schijndemocratie",
+    "date": "2024-12-11T12:39:44.956Z",
+    "excerpt": "De Stadspartij stemt tegen het inwonersberaad van €300.000, dat volgens hen weinig echte inspraak biedt en al vooraf gekaderd is door bestaand beleid.",
+    "thumbnail": "/images/uploads/top-view-paper-style-democracy-composition.jpg",
+    "path": "/blogs/3-ton-voor-schijndemocratie.html"
   }
 ]
