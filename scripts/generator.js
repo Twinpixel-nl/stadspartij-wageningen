@@ -155,14 +155,18 @@ function createBlogHtmlPage(data, markdownContent, marked) {
       <img src="${data.thumbnail}" alt="" class="blog-post-thumbnail">
       <div class="blog-post-info">
         <p class="meta">Gepubliceerd op ${formattedDate}</p>
+        <div class="blog-post-content">${htmlContent}</div>
       </div>
     </div>
-    ` : `<p class="meta">Gepubliceerd op ${formattedDate}</p>`}
+    ` : `
+      <p class="meta">Gepubliceerd op ${formattedDate}</p>
+      <div class="blog-post-content">${htmlContent}</div>
+    `}
 
-    <div class="blog-post-content">${htmlContent}</div>
     <a href="/nieuws.html" class="btn btn-light">← Terug naar overzicht</a>
   </article>
 </main>
+
 
 
 

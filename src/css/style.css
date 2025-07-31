@@ -353,7 +353,7 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
 .blog-post-header {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 2rem;
   align-items: flex-start;
   margin-bottom: 2rem;
 }
