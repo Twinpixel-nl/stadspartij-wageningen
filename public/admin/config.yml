@@ -35,32 +35,29 @@ collections:
       - { label: "Inhoud", name: "body", widget: "markdown" }
 
   # Collectie 2: Raadsleden
-  - name: "raadslid"
+  - name: "raadsleden"
     label: "Raadsleden & Team"
     folder: "src/_content/raadsleden"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.naam | slugify}}"
     fields:
       - { label: "Naam", name: "naam", widget: "string" }
       - {
           label: "Rol",
           name: "rol",
           widget: "string",
-          hint: "bv. Fractievoorzitter, Raadslid, Bestuurslid",
+          hint: "bv. Fractievoorzitter, Raadslid, Bestuurslid"
         }
       - {
           label: "Volgorde op de lijst",
           name: "volgorde",
           widget: "number",
           value_type: "int",
-          default: 99,
+          default: 99
         }
       - { label: "Foto", name: "foto", widget: "image" }
       - { label: "E-mail", name: "email", widget: "string", required: false }
-      - {
-          label: "LinkedIn URL",
-          name: "linkedin",
-          widget: "string",
-          required: false,
-        }
+      - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
       - { label: "Biografie", name: "body", widget: "markdown" }
+
+

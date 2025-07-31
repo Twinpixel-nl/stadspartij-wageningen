@@ -1,9 +1,9 @@
 [
   {
-    "naam": "Onbekende",
-    "rol": "",
-    "foto": null,
-    "volgorde": 999,
-    "path": "/raadsleden/jan-jansen.html"
+    "naam": "Emma de Heer",
+    "rol": "Opperbaas",
+    "foto": "/images/uploads/emma.jpg",
+    "volgorde": 99,
+    "path": "/raadsleden/emma-de-heer.html"
   }
 ]

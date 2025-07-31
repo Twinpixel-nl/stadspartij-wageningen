@@ -351,20 +351,21 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
 }
 
 .blog-post-header {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  max-width: 100%;
+  gap: 2rem;
   align-items: flex-start;
   margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
 }
 
+
 .blog-post-thumbnail {
-  width: 300px;
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
-  flex-shrink: 0;
+  width: 100%;
+  max-width: 300px;
+  flex: 0 0 auto;
 }
+
 
 .blog-post-info {
   flex: 1;
