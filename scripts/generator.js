@@ -56,7 +56,7 @@ function createBlogHtmlPage(data, markdownContent, marked) {
   // De markdown wordt HIER omgezet naar HTML.
   const htmlContent = marked.parse(markdownContent);
 
-  // !! VERVANG DEZE TEMPLATE MET JE EIGEN LAYOUT !!
+  // !! LAYOUT TEMPLATE VOOR BLOG PAGINA !!
   return `
 <!DOCTYPE html>
 <html lang="nl">
@@ -190,41 +190,121 @@ function createBlogHtmlPage(data, markdownContent, marked) {
  * @returns {string} - Volledige HTML-pagina.
  */
 function createRaadslidHtmlPage(data, markdownBioContent, marked) {
-  // De markdown wordt HIER omgezet naar HTML.
   const htmlBioContent = marked.parse(markdownBioContent);
 
-  // !! VERVANG DEZE TEMPLATE MET JE EIGEN LAYOUT !!
-  return `
-<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${data.naam} - Stadspartij Wageningen</title>
-    <meta name="description" content="Profiel van ${data.naam}, ${data.rol} bij Stadspartij Wageningen.">
-    <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${data.naam} – ${data.rol} | Stadspartij Wageningen</title>
+  <meta name="description" content="Profiel van ${data.naam}, ${data.rol} bij Stadspartij Wageningen." />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+
+  <!-- Fonts & Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="${data.naam} – ${data.rol}" />
+  <meta property="og:description" content="Profiel van ${data.naam}, ${data.rol}" />
+  <meta property="og:image" content="${data.foto || '/images/logo.png'}" />
+  <meta property="og:url" content="https://stadspartijwageningen.nl${data.pad || ''}" />
+  <meta property="og:type" content="profile" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${data.naam} – ${data.rol}" />
+  <meta name="twitter:description" content="Profiel van ${data.naam}, ${data.rol}" />
+  <meta name="twitter:image" content="${data.foto || '/images/logo.png'}" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "${data.naam}",
+    "description": "${data.rol}",
+    "image": "${data.foto || 'https://stadspartijwageningen.nl/images/logo.png'}",
+    "jobTitle": "${data.rol}",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Stadspartij Wageningen"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://stadspartijwageningen.nl${data.pad || ''}"
+    }
+  }
+  </script>
 </head>
 <body>
-    <header>
-        <!-- PLAK HIER JE HEADER HTML -->
-        <p>Placeholder Header</p>
-    </header>
-    <main class="container">
-        <div class="raadslid-profiel">
-            ${data.foto ? `<img src="${data.foto}" alt="Foto van ${data.naam}" class="profiel-foto">` : ''}
-            <h1>${data.naam}</h1>
-            <h2>${data.rol}</h2>
-            ${data.email ? `<a href="mailto:${data.email}">E-mail</a>` : ''}
-            ${data.linkedin ? `<a href="${data.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>` : ''}
-            <div class="bio">${htmlBioContent}</div>
-            <a href="/fractie.html">← Terug naar het team</a>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <a href="/index.html"><img src="/images/logo.png" alt="Logo Stadspartij Wageningen" /></a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/nieuws.html">Nieuws</a></li>
+          <li class="dropdown">
+            <a href="#" class="drop-btn">Verkiezingen</a>
+            <div class="dropdown-content">
+              <a href="/samenvatting-verkiezingsprogramma.html">Samenvatting Programma</a>
+              <a href="/verkiezingsprogramma-compleet.html">Volledig Programma</a>
+              <a href="/kieslijst.html">Kieslijst</a>
+              <a href="/stellingen-stemwijzer.html">Stellingen Stemwijzer</a>
+              <a href="/stellingen-mijnstem.html">Stellingen MijnStem</a>
+            </div>
+          </li>
+          <li><a href="/fractie.html" class="active">Fractie</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section-padding">
+    <article class="raadslid-profiel">
+      <h1>${data.naam}</h1>
+      <p class="meta">${data.rol}</p>
+
+      ${data.foto ? `
+        <div class="raadslid-header">
+          <img src="${data.foto}" alt="Foto van ${data.naam}" class="raadslid-foto">
+          <div class="raadslid-bio">
+            ${htmlBioContent}
+          </div>
         </div>
-    </main>
-    <footer>
-        <!-- PLAK HIER JE FOOTER HTML -->
-        <p>Placeholder Footer</p>
-    </footer>
-    <script src="/js/main.js"></script>
+      ` : `
+        <div class="raadslid-bio">
+          ${htmlBioContent}
+        </div>
+      `}
+
+      ${data.email ? `<p><a href="mailto:${data.email}">📧 ${data.email}</a></p>` : ''}
+      ${data.linkedin ? `<p><a href="${data.linkedin}" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a></p>` : ''}
+
+      <a href="/fractie.html" class="btn btn-light">← Terug naar fractieoverzicht</a>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container text-center">
+      <p>© 2025 Stadspartij Wageningen – Lokaal en Betrokken</p>
+      <p>Website door <strong><a href="https://twinpixel.nl" target="_blank" rel="noopener noreferrer">TwinPixel</a></strong></p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
 </body>
 </html>`;
 }
