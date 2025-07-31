@@ -64,33 +64,33 @@
   </footer>
 
   <script>
-    fetch('/data/raadsleden.json')
-      .then(res => {
-        if (!res.ok) throw new Error('Response niet ok');
-        return res.json();
-      })
-      .then(data => {
-        const container = document.getElementById('team-container');
-        if (!data.length) {
-          document.getElementById('fallback-message').style.display = 'block';
-          return;
-        }
-        data.forEach(lid => {
-          container.innerHTML += `
-            <div class="team-card">
-              <a href="${lid.link}">
-                <img src="${lid.foto}" alt="Foto van ${lid.naam}">
-                <h3>${lid.naam}</h3>
-                <p>${lid.rol}</p>
-              </a>
-            </div>
-          `;
-        });
-      })
-      .catch(err => {
-        console.error('Fout bij laden raadsleden:', err);
-        document.getElementById('fallback-message').style.display = 'block';
-      });
+fetch('/data/raadsleden.json')
+  .then(res => {
+    if (!res.ok) throw new Error('Response niet ok');
+    return res.json();
+  })
+  .then(data => {
+    const container = document.getElementById('team-container');
+    if (!data.length) {
+      document.getElementById('fallback-message').style.display = 'block';
+      return;
+    }
+    data.forEach(lid => {
+      container.innerHTML += `
+        <div class="team-card">
+          <a href="${lid.path}">
+            <img src="${lid.foto}" alt="Foto van ${lid.naam}">
+            <h3>${lid.naam}</h3>
+            <p>${lid.rol}</p>
+          </a>
+        </div>
+      `;
+    });
+  })
+  .catch(err => {
+    console.error('Fout bij laden raadsleden:', err);
+    document.getElementById('fallback-message').style.display = 'block';
+  });
   </script>
 </body>
 </html>
