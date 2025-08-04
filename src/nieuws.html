@@ -66,36 +66,58 @@
 </footer>
 
 
-  <script>
-    fetch('/data/blogs-index.json')
-      .then(res => {
-        if (!res.ok) throw new Error('Response niet ok');
-        return res.json();
-      })
-      .then(data => {
-        const container = document.getElementById('news-container');
-        if (!data.length) {
-          document.getElementById('fallback-message').style.display = 'block';
-          return;
-        }
-        data.forEach(item => {
-          container.innerHTML += `
-            <article class="news-item">
-<a href="${item.path}">
-  <img src="${item.thumbnail || 'https://via.placeholder.com/400x250'}" alt="Nieuwsbericht">
-</a>
-              <div class="news-content">
-                <h4>${item.title}</h4>
-                <p>${item.excerpt}</p>
-                <a href="${item.path}">Lees meer →</a>
-              </div>
-            </article>`;
-        });
-      })
-      .catch(err => {
-        console.error('Fout bij laden nieuws:', err);
+<script>
+  const ITEMS_PER_PAGE = 6; // Aantal nieuwsberichten per pagina
+
+  const params = new URLSearchParams(window.location.search);
+  const currentPage = parseInt(params.get('page')) || 1;
+
+  fetch('/data/blogs-index.json')
+    .then(res => {
+      if (!res.ok) throw new Error('Response niet ok');
+      return res.json();
+    })
+    .then(data => {
+      const container = document.getElementById('news-container');
+      if (!data.length) {
         document.getElementById('fallback-message').style.display = 'block';
+        return;
+      }
+
+      const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+      const endIndex = startIndex + ITEMS_PER_PAGE;
+      const pageItems = data.slice(startIndex, endIndex);
+
+      pageItems.forEach(item => {
+        container.innerHTML += `
+          <article class="news-item">
+            <a href="${item.path}">
+              <img src="${item.thumbnail || 'https://via.placeholder.com/400x250'}" alt="Nieuwsbericht">
+            </a>
+            <div class="news-content">
+              <h4>${item.title}</h4>
+              <p>${item.excerpt}</p>
+              <a href="${item.path}">Lees meer →</a>
+            </div>
+          </article>`;
       });
-  </script>
+
+      // Paginanavigatie
+      const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
+      if (totalPages > 1) {
+        let paginationHTML = '<div class="pagination">';
+        for (let i = 1; i <= totalPages; i++) {
+          paginationHTML += `<a href="?page=${i}" class="${i === currentPage ? 'active' : ''}">${i}</a>`;
+        }
+        paginationHTML += '</div>';
+        container.insertAdjacentHTML('afterend', paginationHTML);
+      }
+    })
+    .catch(err => {
+      console.error('Fout bij laden nieuws:', err);
+      document.getElementById('fallback-message').style.display = 'block';
+    });
+</script>
+
 </body>
 </html>
