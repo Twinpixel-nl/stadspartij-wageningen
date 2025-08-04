@@ -81,7 +81,9 @@
         data.forEach(item => {
           container.innerHTML += `
             <article class="news-item">
-              <img src="${item.thumbnail || 'https://via.placeholder.com/400x250'}" alt="Nieuwsbericht">
+<a href="${item.path}">
+  <img src="${item.thumbnail || 'https://via.placeholder.com/400x250'}" alt="Nieuwsbericht">
+</a>
               <div class="news-content">
                 <h4>${item.title}</h4>
                 <p>${item.excerpt}</p>
