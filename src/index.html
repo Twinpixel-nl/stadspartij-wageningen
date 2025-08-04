@@ -152,7 +152,7 @@ fetch('/data/raadsleden-index.json')
     preview.forEach(lid => {
       container.innerHTML += `
         <div class="team-card">
-          <a href="${lid.link}">
+          <a href="${lid.path}">
             <img src="${lid.foto}" alt="Foto van ${lid.naam}">
             <h3>${lid.naam}</h3>
             <p>${lid.rol}</p>
