@@ -443,3 +443,9 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
     text-align: center;
   }
 }
+
+.blog-post img.emoji {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+}
