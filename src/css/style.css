@@ -150,7 +150,7 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
 }
 .team-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+ box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
     border-color: var(--primary-color);
 }
 .team-card img {
@@ -166,9 +166,13 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
     font-size: 1.4rem;
 }
 .team-card p {
-    color: var(--medium-grey);
-    font-weight: 700;
+  font-weight: 400;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  color: #555;
+  font-style: italic;
 }
+
 
 /* Nieuws Sectie & Pagina */
 .news-grid-full {
@@ -466,4 +470,15 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
 .pagination a.active {
   background: #0a2cca;
   color: #fff;
+}
+
+@media (max-width: 576px) {
+  .team-card {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 576px) {
+  .container {
+    padding: 0 16px;
+  }
 }
