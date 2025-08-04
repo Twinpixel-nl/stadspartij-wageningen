@@ -452,7 +452,7 @@ async function main() {
       rol: data.rol || "",
       foto: data.foto || null,
       volgorde: parseInt(data.volgorde || 999, 10),
-      ppath: `raadsleden/${slug}.html`,
+      path: `/raadsleden/${slug}.html`,
     }),
     sortFunction: (a, b) => a.volgorde - b.volgorde,
   }, marked); // <-- EN DEZE OOK
