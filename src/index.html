@@ -144,30 +144,28 @@ fetch('data/blogs-index.json')
   });
 </script>
 <script>
-  fetch('/data/raadsleden-index.json')
-    .then(res => {
-      if (!res.ok) throw new Error('Response niet ok');
-      return res.json();
-    })
-    .then(data => {
-      const container = document.getElementById('team-preview-container');
-      const preview = data.slice(0, 4); // bijv. eerste 4 leden
-      preview.forEach(lid => {
-        container.innerHTML += `
-          <div class="team-card">
-            <a href="${lid.link}">
-              <img src="${lid.foto}" alt="Foto van ${lid.naam}">
-              <h3>${lid.naam}</h3>
-              <p>${lid.rol}</p>
-            </a>
-          </div>
-        `;
-      });
-    })
-    .catch(err => {
-      console.error('Fout bij laden teamleden (index):', err);
-      document.getElementById('fallback-team').style.display = 'block';
+fetch('/data/raadsleden-index.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('team-preview-container');
+    const preview = data.slice(0, 4); // max 4 personen tonen
+    preview.forEach(lid => {
+      container.innerHTML += `
+        <div class="team-card">
+          <a href="${lid.link}">
+            <img src="${lid.foto}" alt="Foto van ${lid.naam}">
+            <h3>${lid.naam}</h3>
+            <p>${lid.rol}</p>
+          </a>
+        </div>
+      `;
     });
+  })
+  .catch(error => {
+    console.error('Fout bij laden teamleden:', error);
+    document.getElementById('fallback-team').style.display = 'block';
+  });
+
 </script>
   </body>
 </html>
