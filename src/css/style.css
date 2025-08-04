@@ -444,8 +444,9 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
   }
 }
 
-.blog-post img.emoji {
-  width: 1.2em;
-  height: 1.2em;
+.blog-post img[src*="emoji"] {
+  max-width: 1.5em;
+  height: auto;
   vertical-align: middle;
+  display: inline;
 }
