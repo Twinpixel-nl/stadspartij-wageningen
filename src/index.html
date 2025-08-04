@@ -95,41 +95,11 @@
 
 
       <!-- AANGEPAST: 'Onze Mensen' sectie met ruimte voor foto's en 4 kolommen -->
-      <section class="team-section section-padding">
-        <div class="container">
-          <h2 class="section-title">Maak Kennis Met Ons</h2>
-          <p style="text-align: center; max-width: 600px; margin: 0 auto 40px">
-            Wij zijn een gedreven team met hart voor Wageningen! Wij gaan graag
-            met u in gesprek en neemt u dus gerust contact met ons op.
-          </p>
-          <!-- Aangepaste grid voor 4 teamleden -->
-          <div class="team-grid">
-            <div class="team-card">
-              <img src="images/Klaas.webp" alt="Foto van Klaas de Weerd" >
-              <h3>Klaas de Weerd</h3>
-              <p>Raadslid</p>
-            </div>
-            <div class="team-card">
-              <img src="images/Henk.webp" alt="Foto van Henk van Beek" >
-              <h3>Henk van Beek</h3>
-              <p>Raadslid</p>
-            </div>
-            <div class="team-card">
-              <img src="images/Rien.webp" alt="Foto van Rien Bor" >
-              <h3>Rien Bor</h3>
-              <p>Fractievoorzitter / Raadslid</p>
-            </div>
-            <div class="team-card">
-              <img
-                src="images/Otto.jpg"
-                alt="Foto van Marjolein van der Vlist"
-              >
-              <h3>Otto Vleemingen</h3>
-              <p>Raadslid</p>
-            </div>
-          </div>
-        </div>
-      </section>
+<div class="team-grid" id="team-preview-container">
+  <!-- Wordt dynamisch geladen -->
+</div>
+<p id="fallback-team" style="text-align:center; display:none;">Teamleden konden niet worden geladen.</p>
+
 
       <!-- Call to Action (Behouden voor een duidelijke actieknop) -->
       <section class="cta section-padding">
@@ -173,6 +143,31 @@ fetch('data/blogs-index.json')
     console.error('Fout bij laden nieuws op homepage:', error);
   });
 </script>
-
+<script>
+  fetch('data/raadsleden.json')
+    .then(res => {
+      if (!res.ok) throw new Error('Response niet ok');
+      return res.json();
+    })
+    .then(data => {
+      const container = document.getElementById('team-preview-container');
+      const preview = data.slice(0, 4); // bijv. eerste 4 leden
+      preview.forEach(lid => {
+        container.innerHTML += `
+          <div class="team-card">
+            <a href="${lid.link}">
+              <img src="${lid.foto}" alt="Foto van ${lid.naam}">
+              <h3>${lid.naam}</h3>
+              <p>${lid.rol}</p>
+            </a>
+          </div>
+        `;
+      });
+    })
+    .catch(err => {
+      console.error('Fout bij laden teamleden (index):', err);
+      document.getElementById('fallback-team').style.display = 'block';
+    });
+</script>
   </body>
 </html>
