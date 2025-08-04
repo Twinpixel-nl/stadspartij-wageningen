@@ -1,7 +1,7 @@
 ---
 title: Leefbaar en herkenbaar
 date: 2025-03-19T11:06:35.692Z
-thumbnail: /images/uploads/jelmer-768x644-ezgif.com-webp-to-jpg-converter.jpg
+thumbnail: /images/uploads/wiel-background.png
 excerpt: Nieuw steunfractielid Jelmer wil met een kritische én verbindende blik
   werken aan een leefbaar Wageningen, met focus op woningbouw, bereikbaarheid en
   transparantie.
