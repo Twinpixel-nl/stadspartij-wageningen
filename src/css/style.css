@@ -144,7 +144,7 @@ li.active > a {
 }
 .btn-primary { background-color: var(--primary-color); color: var(--white); }
 .btn-primary:hover { background-color: #a00000; }
-.btn-light { background-color: var(--white); color: var(--primary-color); }
+.btn-light { background-color: var(--primary-color); color: var(--white); }
 .btn-light:hover { background-color: var(--light-grey); }
 
 /* Grid & Cards (voor Standpunten en Nieuws op Homepage) */
