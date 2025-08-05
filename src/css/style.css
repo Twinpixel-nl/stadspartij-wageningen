@@ -159,7 +159,11 @@ li.active > a {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
-
+/* Fix voor de klikbare team-kaart die zelf een link is */
+a.team-card {
+    text-decoration: none; /* Verwijder de onderstreping */
+    color: inherit;        /* Zorgt dat de tekst de juiste kleur krijgt */
+}
 /* Team Sectie (4 kolommen) */
 .team-grid {
     display: grid;
