@@ -146,16 +146,16 @@ fetch('data/blogs-index.json')
 
     top3.forEach(item => {
       container.innerHTML += `
-        <article class="news-item">
-          <a href="${item.path}">
-  <img src="${item.thumbnail || 'https://via.placeholder.com/400x250'}" alt="Nieuwsbericht">
-</a>
-          <div class="news-content">
-            <h4>${item.title}</h4>
-            <p>${item.excerpt}</p>
-            <a href="${item.path}">Lees meer →</a>
-          </div>
-        </article>`;
+          <a href="${item.path}" class="news-item-link">
+            <article class="news-item">
+              <img src="${item.thumbnail || 'https://via.placeholder.com/400x250'}" alt="Nieuwsbericht">
+              <div class="news-content">
+                <h4>${item.title}</h4>
+                <p>${item.excerpt}</p>
+                <span class="read-more">Lees meer →</span>
+              </div>
+            </article>
+          </a>`;
     });
   })
   .catch(error => {
