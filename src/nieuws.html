@@ -106,9 +106,28 @@
       const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
       if (totalPages > 1) {
         let paginationHTML = '<div class="pagination">';
+
+        // --- VOEG TOE: Logica voor 'Vorige' knop ---
+        if (currentPage > 1) {
+          paginationHTML += `<a href="?page=${currentPage - 1}" class="prev-btn">&laquo;</a>`;
+        } else {
+          // Voeg een 'disabled' class toe als we op de eerste pagina zijn
+          paginationHTML += `<a href="#" class="prev-btn disabled" aria-disabled="true">&laquo;</a>`;
+        }
+
+        // De bestaande loop voor de nummers
         for (let i = 1; i <= totalPages; i++) {
           paginationHTML += `<a href="?page=${i}" class="${i === currentPage ? 'active' : ''}">${i}</a>`;
         }
+        
+        // --- VOEG TOE: Logica voor 'Volgende' knop ---
+        if (currentPage < totalPages) {
+          paginationHTML += `<a href="?page=${currentPage + 1}" class="next-btn">&raquo;</a>`;
+        } else {
+          // Voeg een 'disabled' class toe als we op de laatste pagina zijn
+          paginationHTML += `<a href="#" class="next-btn disabled" aria-disabled="true">&raquo;</a>`;
+        }
+
         paginationHTML += '</div>';
         container.insertAdjacentHTML('afterend', paginationHTML);
       }
