@@ -83,6 +83,27 @@
   </div>
 </footer>
 
-
+<script>
+    // Script om de actieve link in de navigatie te markeren
+document.addEventListener("DOMContentLoaded", function() {
+  const currentPage = window.location.pathname.split("/").pop();
+  if (currentPage === "") {
+    currentPage = "index.html";
+  }
+  const navLinks = document.querySelectorAll('nav a'); // Of bv. '.navbar a'
+  navLinks.forEach(link => {
+    const linkPage = link.getAttribute('href').split("/").pop();
+    if (linkPage === currentPage) {
+      const parentLi = link.closest('li');
+      const dropdownParent = link.closest('.dropdown');
+      if (dropdownParent) {
+        dropdownParent.classList.add('active');
+      } else if (parentLi) {
+        parentLi.classList.add('active');
+      }
+    }
+  });
+});
+</script>
 </body>
 </html>

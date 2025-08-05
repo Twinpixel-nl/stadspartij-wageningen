@@ -81,6 +81,12 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
     color: var(--primary-color);
 }
 
+/* Stijl voor de link binnen een actieve li */
+li.active > a {
+  color: var(--primary-color); /* Of een andere kleur die je wilt */
+  font-weight: bold; /* Optioneel, voor extra nadruk */
+}
+
 /* Hero Sectie (Homepage) */
 .hero {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/wageningen-van-boven.jpg);
