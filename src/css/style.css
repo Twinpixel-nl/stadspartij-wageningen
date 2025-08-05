@@ -208,18 +208,23 @@ a.team-card {
   font-style: italic;
 }
 
+/* --- NIEUWS SECTIE & PAGINA (GECORRIGEERD) --- */
 
-/* Nieuws Sectie & Pagina */
+/* 1. De container voor de nieuwskaarten */
 .news-grid-full {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
-a.news-item {
-    text-decoration: none; /* Verwijder onderstreping van links */
-    color: inherit; /* Zorgt dat de tekst de juiste kleur krijgt */
+/* 2. De link-wrapper die de hele kaart klikbaar maakt */
+a.news-item-link {
+    text-decoration: none; /* VERWIJDER ONDERSTREPING */
+    color: inherit;        /* NEGEER STANDAARD LINK-KLEUR */
+    display: flex;         /* Zorgt dat de kaart de volledige hoogte vult */
 }
+
+/* 3. De kaart zelf (de <article>) */
 .news-item {
     background: var(--white);
     border-radius: 8px;
@@ -227,20 +232,51 @@ a.news-item {
     border: 1px solid #eee;
     display: flex;
     flex-direction: column;
+    width: 100%; /* Zorgt dat de kaart de wrapper vult */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none; /* Verwijder onderstreping van links */
 }
-.news-item:hover {
+
+/* 4. Het hover-effect (op de link-wrapper) */
+a.news-item-link:hover .news-item {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     border-color: var(--primary-color);
 }
-.news-item img { width: 100%; height: 200px; object-fit: cover; }
-.news-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column;text-decoration: none; }
-.news-content h4 { margin-top: 0; font-size: 1.3rem; }
-.news-content p { flex-grow: 1; }
-.news-content a { color: var(--primary-color); text-decoration: none; font-weight: 700; align-self: flex-start; }
 
+/* 5. De afbeelding */
+.news-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* 6. De content-div en de tekstelementen */
+.news-content {
+    padding: 25px;
+    flex-grow: 1; /* Zorgt dat de content de resterende ruimte vult */
+    display: flex;
+    flex-direction: column;
+}
+
+.news-content h4 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: var(--dark-grey); /* ZEKER WETEN DE JUISTE KLEUR */
+}
+
+.news-content p {
+    flex-grow: 1;
+    color: var(--medium-grey); /* ZEKER WETEN DE JUISTE KLEUR */
+    margin-bottom: 20px;
+}
+
+/* 7. De "Lees meer" tekst (nu een <span>) */
+.news-content .read-more {
+    color: var(--primary-color); /* JOUW RODE KLEUR */
+    font-weight: 700;
+    align-self: flex-start;
+    margin-top: auto; /* Duwt de link naar de bodem */
+}
 /* ... (alle bestaande CSS-code) ... */
 
 /* --- Dropdown Navigatie --- */
