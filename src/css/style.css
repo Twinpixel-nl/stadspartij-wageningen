@@ -484,28 +484,18 @@ li.active > a {
   vertical-align: middle;
   display: inline;
 }
-/* Gebruik flexbox voor een nette uitlijning van de paginering */
 .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px; /* Moderne manier voor ruimte tussen items */
-    margin-top: 40px; /* Ruimte boven de paginering */
-    flex-wrap: wrap; /* Zorgt dat het netjes ombreekt op kleine schermen */
+  margin-top: 40px;
+  text-align: center;
 }
-
-/* Verwijder de oude margin van de 'a' tags, want 'gap' regelt dit nu */
 .pagination a {
-    margin: 0; /* Belangrijk voor een strakke uitlijning met gap */
-    /* De rest van je 'a' stijlen blijven hetzelfde (padding, background, etc.) */
-}
-
-/* Stijl voor een uitgeschakelde knop (pijl) */
-.pagination a.disabled {
-    color: #ccc;
-    pointer-events: none; /* Maakt de knop niet-klikbaar */
-    background-color: #f4f4f4; /* Lichtgrijze achtergrond om aan te geven dat hij inactief is */
-    cursor: default;
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 0 5px;
+  background: #eee;
+  color: #000;
+  text-decoration: none;
+  border-radius: 4px;
 }
 .pagination a.active {
   background: var(--primary-color);
