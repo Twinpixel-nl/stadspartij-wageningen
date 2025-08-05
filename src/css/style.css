@@ -9,6 +9,7 @@
     --font-family-body: 'Lato', sans-serif;
 }
 
+
 body {
     font-family: var(--font-family-body);
     line-height: 1.7;
@@ -39,6 +40,24 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
 .section-padding-light { padding: 60px 0; background-color: var(--light-grey); }
 .section-title { text-align: center; margin-bottom: 40px; }
 
+/* --- Aanpassing voor de Introductie Sectie (om het 'mooi' te maken) --- */
+#intro {
+    background-color: var(--white); /* Zorgt voor een schone achtergrond */
+}
+
+#intro .container {
+    max-width: 850px; /* MAAK DE CONTENT SMALER dan de standaard 1100px */
+    text-align: center; /* CENTREER ALLE TEKST (h2 en p's) */
+}
+
+#intro h2 {
+    margin-bottom: 25px; /* Iets meer ruimte onder de hoofdtitel */
+}
+
+/* Je hebt al een 'lead' class, die perfect werkt met de centrering! */
+#intro p.lead {
+    margin-bottom: 20px; /* Ruimte tussen de twee paragrafen */
+}
 /* Header & Navigatie */
 .site-header {
     background: var(--white);
