@@ -215,6 +215,11 @@ a.team-card {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
+
+a.news-item {
+    text-decoration: none; /* Verwijder onderstreping van links */
+    color: inherit; /* Zorgt dat de tekst de juiste kleur krijgt */
+}
 .news-item {
     background: var(--white);
     border-radius: 8px;
