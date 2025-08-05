@@ -498,7 +498,7 @@ li.active > a {
   border-radius: 4px;
 }
 .pagination a.active {
-  background: #0a2cca;
+  background: var(--primary-color);
   color: #fff;
 }
 
