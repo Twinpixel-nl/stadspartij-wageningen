@@ -168,17 +168,17 @@ fetch('/data/raadsleden-index.json')
   .then(data => {
     const container = document.getElementById('team-preview-container');
     const preview = data.slice(0, 4); // max 4 personen tonen
-    preview.forEach(lid => {
-      container.innerHTML += `
-        <div class="team-card">
-          <a href="${lid.path}">
-            <img src="${lid.foto}" alt="Foto van ${lid.naam}">
-            <h3>${lid.naam}</h3>
-            <p>${lid.rol}</p>
-          </a>
-        </div>
-      `;
-    });
+  // ...
+preview.forEach(lid => {
+  container.innerHTML += `
+    <a href="${lid.path}" class="team-card">
+      <img src="${lid.foto}" alt="Foto van ${lid.naam}">
+      <h3>${lid.naam}</h3>
+      <p>${lid.rol}</p>
+    </a>
+  `;
+});
+// ...
   })
   .catch(error => {
     console.error('Fout bij laden teamleden:', error);
