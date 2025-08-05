@@ -173,6 +173,11 @@ li.active > a {
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+/* --- Fix voor de link in de team-card --- */
+.team-card a {
+    text-decoration: none; /* Verwijder de onderstreping */
+    color: inherit;        /* Laat tekst de kleur van de h3/p overnemen */
+}
 .team-card:hover {
     transform: translateY(-5px);
  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
