@@ -77,6 +77,7 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
 .logo img {
     max-height: 50px;
     width: auto;
+    margin-top: 5px;;
 }
 
 .main-nav ul {
