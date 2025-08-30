@@ -489,27 +489,30 @@ a.news-item-link:hover .news-item {
         display: flex;
     }
 
- .main-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh; /* STAP 1: Gebruik de viewport-hoogte eenheid */
-        background-color: var(--white);
-        flex-direction: column;
-        justify-content: flex-start; /* Laat het menu bovenaan beginnen */
-        align-items: center;
-        z-index: 100;
-        overflow-y: auto;
-        padding-top: 80px;
-        box-sizing: border-box; /* STAP 2: Zorg dat padding binnen de height valt */
-        
-        /* Animatie eigenschappen */
-        transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
-        transform: translateX(100%);
-        visibility: hidden;
-        pointer-events: none;
-    }
+/* --- PLAK DIT IN DE PLAATS VAN HET OUDE .main-nav BLOK --- */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Gebruik volledige schermhoogte */
+    background-color: var(--white);
+    z-index: 100;
+    
+    /* DE BELANGRIJKE CORRECTIE: */
+    display: flex;
+    justify-content: flex-start; /* LIJN DE INHOUD BOVENAAN UIT, NIET IN HET MIDDEN */
+    align-items: center;         /* Centreer de items horizontaal */
+    padding-top: 80px;           /* Ruimte vanaf de bovenkant van het scherm */
+    box-sizing: border-box;      /* Zorg dat padding de hoogte niet beïnvloedt */
+    overflow-y: auto;            /* Maak scrollen mogelijk als het toch te lang is */
+
+    /* Animatie eigenschappen (deze blijven hetzelfde) */
+    transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transform: translateX(100%);
+    visibility: hidden;
+    pointer-events: none;
+}
 
     .main-nav.is-active {
         /* Toon en schuif in beeld */
@@ -518,12 +521,13 @@ a.news-item-link:hover .news-item {
         pointer-events: auto; /* Sta interactie toe */
     }
 
-    .main-nav ul {
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
-        padding-bottom: 60px;
-    }
+/* --- PLAK DIT IN DE PLAATS VAN HET OUDE .main-nav ul BLOK --- */
+.main-nav ul {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 40px; /* Iets minder padding onderaan is beter */
+}
 
     .main-nav li {
         margin: 10px 0;
