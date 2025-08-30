@@ -412,7 +412,6 @@ a.news-item-link:hover .news-item {
 @media (max-width: 768px) {
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
-    .main-nav { display: none; /* JS nodig voor een hamburgermenu */ }
     .grid, .news-grid-full { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .team-grid { grid-template-columns: repeat(2, 1fr); }
@@ -439,7 +438,200 @@ a.news-item-link:hover .news-item {
   display: flex;
   flex-wrap: wrap;
 }
+/* --- Hamburger Menu Icon (Cleaner) --- */
+.hamburger {
+    display: none; /* Standaard verborgen op desktop */
+    flex-direction: column;
+    justify-content: space-between; /* Verdeelt de lijnen gelijkmatig */
+    width: 28px; /* Iets smaller */
+    height: 20px; /* Iets minder hoog */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
+    position: relative; /* Voor centering in sommige gevallen */
+}
 
+.hamburger:focus {
+    outline: none;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px; /* Dunnere lijnen */
+    background: var(--dark-grey);
+    border-radius: 2px; /* Minder afgerond */
+    transition: all 0.3s ease-in-out; /* Gladdere transitie */
+}
+
+/* Animatie voor openen/sluiten (Strakker) */
+.hamburger.is-active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg); /* Beweeg en roteer naar midden */
+}
+
+.hamburger.is-active span:nth-child(2) {
+    opacity: 0; /* Direct onzichtbaar */
+}
+
+.hamburger.is-active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg); /* Beweeg en roteer naar midden */
+}
+
+/* --- Responsieve Navigatie voor Mobiel (GECORRIGEERD) --- */
+@media (max-width: 768px) {
+    .site-header .container {
+        justify-content: space-between;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .main-nav {
+        /* Start verborgen en buiten beeld */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        overflow-y: auto;
+        padding-top: 80px;
+        
+        /* Animatie eigenschappen */
+        transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        transform: translateX(100%); /* Start buiten beeld rechts */
+        visibility: hidden; /* Standaard onzichtbaar */
+        pointer-events: none; /* Voorkomt interactie wanneer verborgen */
+    }
+
+    .main-nav.is-active {
+        /* Toon en schuif in beeld */
+        transform: translateX(0); /* Schuif in beeld */
+        visibility: visible; /* Zichtbaar maken */
+        pointer-events: auto; /* Sta interactie toe */
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        padding-bottom: 60px;
+    }
+
+    .main-nav li {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .main-nav a {
+        font-size: 1.6rem;
+        padding: 12px 0;
+        display: block;
+        color: var(--dark-grey);
+        font-weight: 700;
+        position: relative;
+    }
+
+    .main-nav a:hover, .main-nav a.active {
+        color: var(--primary-color);
+    }
+
+    .main-nav a.active::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0px;
+        width: 30px;
+        height: 2px;
+        background-color: var(--primary-color);
+    }
+
+    /* Dropdown aanpassingen voor mobiel in hamburgermenu (Cleaner) */
+    .main-nav .dropdown {
+        position: static;
+        width: 100%;
+    }
+
+    .main-nav .drop-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .main-nav .dropdown-content {
+        position: static;
+        background-color: var(--light-grey);
+        box-shadow: none;
+        border-top: none;
+        border-radius: 0;
+        width: 100%;
+        padding: 10px 0;
+        
+        /* Gebruik height en opacity voor de dropdown animatie */
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    }
+
+    .main-nav .dropdown.is-open .dropdown-content {
+        max-height: 200px; /* Voldoende hoogte voor de content */
+        opacity: 1;
+    }
+
+    .main-nav .dropdown-content a {
+        padding: 8px 0;
+        font-size: 1.2rem;
+        color: var(--medium-grey);
+        font-weight: 400;
+    }
+
+    .main-nav .drop-btn::after {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        border: solid var(--dark-grey);
+        border-width: 0 2px 2px 0;
+        transform: translateY(0px) rotate(45deg);
+        transition: transform 0.3s ease;
+        margin-left: 0;
+    }
+    .main-nav .dropdown.is-open .drop-btn::after {
+        transform: translateY(3px) rotate(-135deg);
+    }
+}
+
+/* Aanpassing desktop dropdowns zodat ze niet direct openen als je de menuknop raakt */
+.main-nav .dropdown:hover .dropdown-content {
+    /* Op desktop, behoud het hover gedrag */
+    /* Gebruik een media query om er zeker van te zijn dat dit alleen op desktop is */
+    @media (min-width: 769px) {
+        display: block;
+        /* Desktop dropdowns gebruiken nog steeds display: block/none */
+        /* Zorg dat de max-height/opacity van mobiel hier niet stoort */
+        max-height: none;
+        opacity: 1;
+    }
+}
+
+/* Aanpassing desktop dropdowns zodat ze niet direct openen als je de menuknop raakt */
+.main-nav .dropdown:hover .dropdown-content {
+    /* Op desktop, behoud het hover gedrag */
+    @media (min-width: 769px) {
+        display: block;
+    }
+}
 
 .blog-post-thumbnail {
   width: 100%;
