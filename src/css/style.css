@@ -412,7 +412,6 @@ a.news-item-link:hover .news-item {
 @media (max-width: 768px) {
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
-    .main-nav { display: none; /* JS nodig voor een hamburgermenu */ }
     .grid, .news-grid-full { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .team-grid { grid-template-columns: repeat(2, 1fr); }
@@ -439,7 +438,200 @@ a.news-item-link:hover .news-item {
   display: flex;
   flex-wrap: wrap;
 }
+/* --- KOPIEER VANAF HIER --- */
 
+/* --- Hamburger Menu Icon (Cleaner) --- */
+.hamburger {
+    display: none; /* Standaard verborgen op desktop */
+    flex-direction: column;
+    justify-content: space-around; /* Verdeelt de lijnen gelijkmatig */
+    width: 28px;
+    height: 28px; /* Iets meer ruimte */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101; /* Zorgt dat het icoon altijd boven de nav staat */
+}
+
+.hamburger:focus {
+    outline: none;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px; /* Iets dikkere lijnen voor duidelijkheid */
+    background: var(--dark-grey);
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+.hamburger.is-active span {
+    background: var(--primary-color);
+}
+/* Animatie voor openen/sluiten (X-vorm) */
+.hamburger.is-active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.hamburger.is-active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.is-active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* --- Responsieve Navigatie voor Mobiel (VOLLEDIGE FIX) --- */
+@media (max-width: 768px) {
+    .site-header .container {
+        justify-content: space-between;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* DE FIX VOOR ZICHTBAARHEID: .main-nav */
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Gebruik volledige schermhoogte */
+        background-color: var(--white);
+        z-index: 100;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* LIJN BOVENAAN UIT, NIET CENTREREN */
+        align-items: center;
+        
+        padding-top: 100px; /* Ruimte vanaf de bovenkant */
+        box-sizing: border-box; /* Zorgt dat padding de hoogte niet beïnvloedt */
+        overflow-y: auto;   /* Scrollen als het menu ooit te lang wordt */
+
+        /* Animatie eigenschappen */
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(100%); /* Start buiten beeld */
+        visibility: hidden;
+    }
+
+    .main-nav.is-active {
+        transform: translateX(0); /* Schuif in beeld */
+        visibility: visible;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+
+    .main-nav li {
+        margin: 15px 0; /* Iets meer ruimte tussen de items */
+    }
+
+    .main-nav a {
+        font-size: 1.8rem; /* Groter lettertype voor mobiel */
+        padding: 10px 0;
+        display: block;
+    }
+    
+    /* DE FIX VOOR DE UITKLAPBARE DROPDOWN */
+    .main-nav .dropdown {
+        position: static;
+    }
+
+    .main-nav .drop-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px; /* Ruimte tussen tekst en pijltje */
+    }
+
+    /* Pijltje voor de dropdown */
+    .main-nav .drop-btn::after {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        border: solid var(--dark-grey);
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        transition: transform 0.3s ease;
+    }
+    
+    /* Draai het pijltje als de dropdown open is */
+    .main-nav .dropdown.is-open .drop-btn::after {
+        transform: rotate(-135deg) translateY(4px);
+    }
+    
+    /* De dropdown content zelf (verborgen) */
+    .main-nav .dropdown-content {
+        position: static;
+        background-color: var(--light-grey);
+        box-shadow: none;
+        border-top: none;
+        border-radius: 0;
+        width: 100%;
+        margin-top: 15px;
+        
+        /* Verberg met max-height voor animatie */
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+    }
+    
+    /* Toon de dropdown content als de parent .is-open heeft */
+    .main-nav .dropdown.is-open .dropdown-content {
+        max-height: 300px; /* Voldoende hoogte voor de content */
+        opacity: 1;
+        padding: 10px 0;
+    }
+
+    .main-nav .dropdown-content a {
+        font-size: 1.2rem; /* Iets kleiner dan hoofditems */
+        font-weight: 400;
+        color: var(--medium-grey);
+        padding: 8px 0;
+    }
+/* --- KOPIEER TOT HIER --- */
+    .main-nav .drop-btn::after {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        border: solid var(--dark-grey);
+        border-width: 0 2px 2px 0;
+        transform: translateY(0px) rotate(45deg);
+        transition: transform 0.3s ease;
+        margin-left: 0;
+    }
+    .main-nav .dropdown.is-open .drop-btn::after {
+        transform: translateY(3px) rotate(-135deg);
+    }
+}
+
+/* Aanpassing desktop dropdowns zodat ze niet direct openen als je de menuknop raakt */
+.main-nav .dropdown:hover .dropdown-content {
+    /* Op desktop, behoud het hover gedrag */
+    /* Gebruik een media query om er zeker van te zijn dat dit alleen op desktop is */
+    @media (min-width: 769px) {
+        display: block;
+        /* Desktop dropdowns gebruiken nog steeds display: block/none */
+        /* Zorg dat de max-height/opacity van mobiel hier niet stoort */
+        max-height: none;
+        opacity: 1;
+    }
+}
+
+/* Aanpassing desktop dropdowns zodat ze niet direct openen als je de menuknop raakt */
+.main-nav .dropdown:hover .dropdown-content {
+    /* Op desktop, behoud het hover gedrag */
+    @media (min-width: 769px) {
+        display: block;
+    }
+}
 
 .blog-post-thumbnail {
   width: 100%;
