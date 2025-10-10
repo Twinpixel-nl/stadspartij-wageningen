@@ -2,6 +2,13 @@
 title: Omdat Wageningen ons lief is
 date: 2025-10-06T11:16:51.613Z
 thumbnail: /images/uploads/als-waga-lief.jpg
+excerpt: >-
+  De Stadspartij zet zich in voor de belangen van alle inwoners van Wageningen.
+  Als
+
+  onafhankelijke lokale partij is de Stadspartij niet gebonden aan landelijke politieke
+
+  agenda’s.
 ---
 De Stadspartij zet zich in voor de belangen van alle inwoners van Wageningen. Als
 onafhankelijke lokale partij is de Stadspartij niet gebonden aan landelijke politieke
