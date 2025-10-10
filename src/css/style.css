@@ -803,3 +803,23 @@ a.news-item-link:hover .news-item {
     padding-left: 15px; /* Zorg voor uitlijning met de menu-items */
   }
 }
+/* ==========================================================================
+   Social Media Iconen op Contact Pagina
+   ========================================================================== */
+
+.contact-socials {
+  margin-top: 15px; /* Wat ruimte onder de paragraaf */
+  display: flex;    /* Zet de iconen naast elkaar */
+  gap: 20px;        /* Ruimte tussen de iconen */
+}
+
+.contact-socials a {
+  color: var(--primary-color);   /* Gebruik de primaire groene kleur */
+  font-size: 1.8rem; /* Maak de iconen lekker groot en klikbaar */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-socials a:hover {
+  color: var(--dark-grey);          /* Een donkere kleur voor de hover-staat */
+  transform: scale(1.1); /* Hetzelfde subtiele groei-effect */
+}
