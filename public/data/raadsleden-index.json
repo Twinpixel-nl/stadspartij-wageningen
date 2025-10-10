@@ -1,9 +1,58 @@
 [
   {
-    "naam": "Emma de Heer",
-    "rol": "Opperbaas",
-    "foto": "/images/uploads/emma.jpg",
-    "volgorde": 99,
-    "path": "/raadsleden/emma-de-heer.html"
+    "naam": "Rien Bor",
+    "rol": "Fractievoorzitter/Raadslid",
+    "foto": "/images/uploads/stadspartij001-1-ezgif.com-webp-to-jpg-converter.jpg",
+    "volgorde": 1,
+    "path": "/raadsleden/rien-bor.html"
+  },
+  {
+    "naam": "Klaas de Weerd",
+    "rol": "Raadslid",
+    "foto": "/images/uploads/stadspartij004-2-ezgif.com-webp-to-jpg-converter.jpg",
+    "volgorde": 2,
+    "path": "/raadsleden/klaas-de-weerd.html"
+  },
+  {
+    "naam": "Henk van Beek",
+    "rol": "Raadslid",
+    "foto": "/images/uploads/henk-ezgif.com-webp-to-jpg-converter.jpg",
+    "volgorde": 3,
+    "path": "/raadsleden/henk-van-beek.html"
+  },
+  {
+    "naam": "Otto Vleeming",
+    "rol": "Raadslid",
+    "foto": "/images/uploads/fractiefoto-stadspartij.jpg-otto-ezgif.com-webp-to-jpg-converter.jpg",
+    "volgorde": 4,
+    "path": "/raadsleden/otto-vleeming.html"
+  },
+  {
+    "naam": "Eric langhorst",
+    "rol": "Steunfractielid",
+    "foto": "/images/uploads/erik-scaled-ezgif.com-webp-to-jpg-converter.jpg",
+    "volgorde": 6,
+    "path": "/raadsleden/eric-langhorst.html"
+  },
+  {
+    "naam": "Jelmer van der neut",
+    "rol": "Steunfractielid",
+    "foto": "/images/uploads/jelmer...jpg",
+    "volgorde": 7,
+    "path": "/raadsleden/jelmer-van-der-neut.html"
+  },
+  {
+    "naam": "Berdien Snijder ",
+    "rol": "Steunfractielid",
+    "foto": "/images/uploads/berdien.jpg",
+    "volgorde": 8,
+    "path": "/raadsleden/berdien-snijder.html"
+  },
+  {
+    "naam": "Linda van Olderen",
+    "rol": " Steunfractielid",
+    "foto": "/images/uploads/linda.jpg",
+    "volgorde": 9,
+    "path": "/raadsleden/linda-van-olderen.html"
   }
 ]

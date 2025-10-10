@@ -19,24 +19,34 @@
       <div class="logo">
         <a href="index.html"><img src="images/logo.png" alt="Logo Stadspartij Wageningen" ></a>
       </div>
+                  <button class="hamburger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
       <nav class="main-nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="nieuws.html" class="active">Nieuws</a></li>
-          <li class="dropdown">
-            <a href="#" class="drop-btn">Verkiezingen</a>
-            <div class="dropdown-content">
-              <a href="samenvatting-verkiezingsprogramma.html">Samenvatting Programma</a>
-              <a href="verkiezingsprogramma-compleet.html">Volledig Programma</a>
-              <a href="kieslijst.html">Kieslijst</a>
-              <a href="stellingen-stemwijzer.html">Stellingen Stemwijzer</a>
-              <a href="stellingen-mijnstem.html">Stellingen MijnStem</a>
-            </div>
-          </li>
-          <li><a href="fractie.html">Fractie</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="fractie.html">Fractie</a></li>
+            <li><a href="nieuws.html" class="active">Nieuws</a></li>
+            <li><a href="ambassadeur.html">Word ambassadeur</a></li>
+            <li class="dropdown">
+              <a href="#" class="drop-btn">Verkiezingen</a>
+              <div class="dropdown-content">
+                <a href="samenvatting-verkiezingsprogramma.html"
+                  >Samenvatting Programma</a
+                >
+                <a href="verkiezingsprogramma-compleet.html"
+                  >Volledig Programma</a
+                >
+                <!-- <a href="kieslijst.html">Kieslijst</a> -->
+                <!-- <a href="stellingen-stemwijzer.html">Stellingen Stemwijzer</a> -->
+                <a href="stellingen-mijnstem.html">Stellingen Stemwijzer</a>
+              </div>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
     </div>
   </header>
 
@@ -65,35 +75,114 @@
   </div>
 </footer>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const mainNav = document.querySelector('.main-nav');
+    const dropDowns = document.querySelectorAll('.main-nav .dropdown');
 
-  <script>
-    fetch('/data/blogs-index.json')
-      .then(res => {
-        if (!res.ok) throw new Error('Response niet ok');
-        return res.json();
-      })
-      .then(data => {
-        const container = document.getElementById('news-container');
-        if (!data.length) {
-          document.getElementById('fallback-message').style.display = 'block';
-          return;
+    // 1. Logica voor het openen en sluiten van het hoofdmenu
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('is-active');
+        mainNav.classList.toggle('is-active');
+
+        // Als het menu sluit, sluit dan ook alle submenus
+        if (!mainNav.classList.contains('is-active')) {
+            dropDowns.forEach(dropdown => {
+                dropdown.classList.remove('is-open');
+            });
         }
-        data.forEach(item => {
-          container.innerHTML += `
+    });
+
+    // 2. Logica voor het openen en sluiten van de dropdowns (submenus)
+    dropDowns.forEach(dropdown => {
+        const dropBtn = dropdown.querySelector('.drop-btn');
+        
+        dropBtn.addEventListener('click', function(event) {
+            // Voorkom dat de link navigeert op mobiel
+            if (window.innerWidth <= 768) {
+                event.preventDefault();
+                
+                // Toggle de 'is-open' class op de huidige dropdown
+                const wasOpen = dropdown.classList.contains('is-open');
+
+                // Sluit eerst alle andere dropdowns
+                dropDowns.forEach(d => d.classList.remove('is-open'));
+
+                // Open de huidige dropdown als hij dicht was
+                if (!wasOpen) {
+                    dropdown.classList.add('is-open');
+                }
+            }
+        });
+    });
+});
+</script>
+<script>
+  const ITEMS_PER_PAGE = 6;
+
+  const params = new URLSearchParams(window.location.search);
+  const currentPage = parseInt(params.get('page')) || 1;
+
+  fetch('/data/blogs-index.json')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('news-container');
+      if (!data.length) {
+        document.getElementById('fallback-message').style.display = 'block';
+        return;
+      }
+
+      const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+      const endIndex = startIndex + ITEMS_PER_PAGE;
+      const pageItems = data.slice(startIndex, endIndex);
+
+      // (De code voor het vullen van de nieuwsberichten blijft hetzelfde)
+      pageItems.forEach(item => {
+        container.innerHTML += `
+          <a href="${item.path}" class="news-item-link">
             <article class="news-item">
               <img src="${item.thumbnail || 'https://via.placeholder.com/400x250'}" alt="Nieuwsbericht">
               <div class="news-content">
                 <h4>${item.title}</h4>
                 <p>${item.excerpt}</p>
-                <a href="${item.path}">Lees meer →</a>
+                <span class="read-more">Lees meer →</span>
               </div>
-            </article>`;
-        });
-      })
-      .catch(err => {
-        console.error('Fout bij laden nieuws:', err);
-        document.getElementById('fallback-message').style.display = 'block';
+            </article>
+          </a>`;
       });
-  </script>
+
+      // Paginanavigatie
+      const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
+      if (totalPages > 1) {
+        let paginationHTML = '<div class="pagination">';
+
+        // --- AANGEPAST: Maak de 'Vorige' knop ALLEEN als currentPage > 1 ---
+        if (currentPage > 1) {
+          paginationHTML += `<a href="?page=${currentPage - 1}" class="prev-btn">&laquo;</a>`;
+        }
+        // --- VERWIJDERD: Het 'else' blok dat de disabled knop maakte ---
+
+        // De loop voor de nummers blijft hetzelfde
+        for (let i = 1; i <= totalPages; i++) {
+          paginationHTML += `<a href="?page=${i}" class="${i === currentPage ? 'active' : ''}">${i}</a>`;
+        }
+        
+        // --- AANGEPAST: Maak de 'Volgende' knop ALLEEN als currentPage < totalPages ---
+        if (currentPage < totalPages) {
+          paginationHTML += `<a href="?page=${currentPage + 1}" class="next-btn">&raquo;</a>`;
+        }
+        // --- VERWIJDERD: Het 'else' blok dat de disabled knop maakte ---
+
+        paginationHTML += '</div>';
+        container.insertAdjacentHTML('afterend', paginationHTML);
+      }
+    })
+    .catch(err => {
+      console.error('Fout bij laden nieuws:', err);
+      document.getElementById('fallback-message').style.display = 'block';
+    });
+</script>
+
 </body>
 </html>

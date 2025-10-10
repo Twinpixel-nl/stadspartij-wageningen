@@ -17,24 +17,34 @@
       <div class="logo">
         <a href="index.html"><img src="images/logo.png" alt="Logo Stadspartij Wageningen" /></a>
       </div>
+                  <button class="hamburger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
       <nav class="main-nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="nieuws.html">Nieuws</a></li>
-          <li class="dropdown">
-            <a href="#">Verkiezingen</a>
-            <div class="dropdown-content">
-              <a href="samenvatting-verkiezingsprogramma.html">Samenvatting Programma</a>
-              <a href="verkiezingsprogramma-compleet.html">Volledig Programma</a>
-              <a href="kieslijst.html">Kieslijst</a>
-              <a href="stellingen-stemwijzer.html">Stellingen Stemwijzer</a>
-              <a href="stellingen-mijnstem.html">Stellingen MijnStem</a>
-            </div>
-          </li>
-          <li><a href="fractie.html" class="active">Fractie</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="fractie.html" class="active">Fractie</a></li>
+            <li><a href="nieuws.html">Nieuws</a></li>
+            <li><a href="ambassadeur.html">Word ambassadeur</a></li>
+            <li class="dropdown">
+              <a href="#" class="drop-btn">Verkiezingen</a>
+              <div class="dropdown-content">
+                <a href="samenvatting-verkiezingsprogramma.html"
+                  >Samenvatting Programma</a
+                >
+                <a href="verkiezingsprogramma-compleet.html"
+                  >Volledig Programma</a
+                >
+                <!-- <a href="kieslijst.html">Kieslijst</a> -->
+                <!-- <a href="stellingen-stemwijzer.html">Stellingen Stemwijzer</a> -->
+                <a href="stellingen-mijnstem.html">Stellingen Stemwijzer</a>
+              </div>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
     </div>
   </header>
 
@@ -62,35 +72,75 @@
       <p>Website door <strong><a href="https://twinpixel.nl" target="_blank" rel="noopener noreferrer">TwinPixel</a></strong></p>
     </div>
   </footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const mainNav = document.querySelector('.main-nav');
+    const dropDowns = document.querySelectorAll('.main-nav .dropdown');
 
-  <script>
-    fetch('/data/raadsleden.json')
-      .then(res => {
-        if (!res.ok) throw new Error('Response niet ok');
-        return res.json();
-      })
-      .then(data => {
-        const container = document.getElementById('team-container');
-        if (!data.length) {
-          document.getElementById('fallback-message').style.display = 'block';
-          return;
+    // 1. Logica voor het openen en sluiten van het hoofdmenu
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('is-active');
+        mainNav.classList.toggle('is-active');
+
+        // Als het menu sluit, sluit dan ook alle submenus
+        if (!mainNav.classList.contains('is-active')) {
+            dropDowns.forEach(dropdown => {
+                dropdown.classList.remove('is-open');
+            });
         }
-        data.forEach(lid => {
-          container.innerHTML += `
-            <div class="team-card">
-              <a href="${lid.link}">
-                <img src="${lid.foto}" alt="Foto van ${lid.naam}">
-                <h3>${lid.naam}</h3>
-                <p>${lid.rol}</p>
-              </a>
-            </div>
-          `;
+    });
+
+    // 2. Logica voor het openen en sluiten van de dropdowns (submenus)
+    dropDowns.forEach(dropdown => {
+        const dropBtn = dropdown.querySelector('.drop-btn');
+        
+        dropBtn.addEventListener('click', function(event) {
+            // Voorkom dat de link navigeert op mobiel
+            if (window.innerWidth <= 768) {
+                event.preventDefault();
+                
+                // Toggle de 'is-open' class op de huidige dropdown
+                const wasOpen = dropdown.classList.contains('is-open');
+
+                // Sluit eerst alle andere dropdowns
+                dropDowns.forEach(d => d.classList.remove('is-open'));
+
+                // Open de huidige dropdown als hij dicht was
+                if (!wasOpen) {
+                    dropdown.classList.add('is-open');
+                }
+            }
         });
-      })
-      .catch(err => {
-        console.error('Fout bij laden raadsleden:', err);
-        document.getElementById('fallback-message').style.display = 'block';
-      });
+    });
+});
+</script>
+  <script>
+fetch('/data/raadsleden-index.json')
+  .then(res => {
+    if (!res.ok) throw new Error('Response niet ok');
+    return res.json();
+  })
+  .then(data => {
+    const container = document.getElementById('team-container');
+    if (!data.length) {
+      document.getElementById('fallback-message').style.display = 'block';
+      return;
+    }
+ data.forEach(lid => {
+  container.innerHTML += `
+    <a href="${lid.path}" class="team-card">
+      <img src="${lid.foto}" alt="Foto van ${lid.naam}">
+      <h3>${lid.naam}</h3>
+      <p>${lid.rol}</p>
+    </a>
+  `;
+});
+  })
+  .catch(err => {
+    console.error('Fout bij laden raadsleden:', err);
+    document.getElementById('fallback-message').style.display = 'block';
+  });
   </script>
 </body>
 </html>

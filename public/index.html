@@ -16,6 +16,15 @@
       rel="stylesheet"
     >
   </head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TSVWXHEL6X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TSVWXHEL6X');
+</script>
   <body>
     <header class="site-header">
       <div class="container">
@@ -24,10 +33,17 @@
             ><img src="images/logo.png" alt="Logo Stadspartij Wageningen"
           ></a>
         </div>
+            <button class="hamburger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <nav class="main-nav">
           <ul>
             <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="fractie.html">Fractie</a></li>
             <li><a href="nieuws.html">Nieuws</a></li>
+            <li><a href="ambassadeur.html">Word ambassadeur</a></li>
             <li class="dropdown">
               <a href="#" class="drop-btn">Verkiezingen</a>
               <div class="dropdown-content">
@@ -37,12 +53,11 @@
                 <a href="verkiezingsprogramma-compleet.html"
                   >Volledig Programma</a
                 >
-                <a href="kieslijst.html">Kieslijst</a>
-                <a href="stellingen-stemwijzer.html">Stellingen Stemwijzer</a>
-                <a href="stellingen-mijnstem.html">Stellingen MijnStem</a>
+                <!-- <a href="kieslijst.html">Kieslijst</a> -->
+                <!-- <a href="stellingen-stemwijzer.html">Stellingen Stemwijzer</a> -->
+                <a href="stellingen-mijnstem.html">Stellingen Stemwijzer</a>
               </div>
             </li>
-            <li><a href="fractie.html">Fractie</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
@@ -52,7 +67,7 @@
       <!-- Hero Sectie (visueel element, content onder intro) -->
       <section class="hero">
         <div class="hero-content">
-          <h1>Stadspartij Wageningen: Met Hart voor de Stad</h1>
+          <h1>Stadspartij Wageningen: <br>als Wageningen je lief is</h1>
           <p>
             Lokaal, onafhankelijk en betrokken bij wat er speelt in Wageningen.
           </p>
@@ -60,86 +75,73 @@
         </div>
       </section>
 
-      <!-- AANGEPAST: Introductie Sectie met content van de live website -->
       <section id="intro" class="intro section-padding">
-        <div class="container">
-          <h2>Een realistische, sociale en gezonde koers voor Wageningen</h2>
-          <p class="lead">
-            De Stadspartij is een lokale partij die zich inzet voor een
-            realistisch, sociaal en gezond beleid. Omdat we geen last hebben van
-            de landelijke politiek kunnen we altijd onze eigen koers varen. We
-            willen graag dat de gemeente realistisch is: geen beloftes doet die
-            ze niet kan waarmaken en transparant is over besluiten. En we staan
-            voor een gemeente die niet meer geld uitgeeft dan er in huis is.
-          </p>
-          <p>
-            De Stadspartij staat ook voor een sociaal beleid, met aandacht voor
-            passende zorg voor jong en oud en woningen voor starters, ouderen,
-            studenten en nieuwkomers. We zetten ons in voor een binnenstad die
-            een levendige en aantrekkelijke ontmoetingsplaats is. Bovenal staan
-            we voor een gezond beleid: we stimuleren bewegen en gezonde voeding,
-            steunen onze ondernemers en acteren op een klimaatbeleid waaraan
-            iedereen mee kan doen.
-          </p>
-        </div>
-      </section>
+  <div class="container">
+    <h2>Een realistische, sociale en gezonde koers</h2>
+    <p class="lead">
+      De Stadspartij Wageningen is een lokale partij die zich inzet voor een
+      realistisch, sociaal en gezond beleid. Omdat we geen last hebben van
+      de landelijke politiek kunnen we altijd onze eigen koers varen. We
+      willen graag dat de gemeente realistisch is: geen beloftes doet die
+      ze niet kan waarmaken en transparant is over besluiten. En we staan
+      voor een gemeente die niet meer geld uitgeeft dan er in huis is.
+    </p>
+    <p>
+      De Stadspartij staat ook voor een sociaal beleid, met aandacht voor
+      passende zorg voor jong en oud en woningen voor starters, ouderen,
+      studenten en nieuwkomers. We zetten ons in voor een binnenstad die
+      een levendige en aantrekkelijke ontmoetingsplaats is. Bovenal staan
+      we voor een gezond beleid: we stimuleren bewegen en gezonde voeding,
+      steunen onze ondernemers en acteren op een klimaatbeleid waaraan
+      iedereen mee kan doen.
+    </p>
+  </div>
+</section>
 
 <section class="nieuws-home section-padding">
   <div class="container">
-    <h2 class="section-title">Laatste Nieuws</h2>
+<h2 class="section-title">Laatste Nieuws</h2>
+<p class="section-subtitle" style="text-align: center; margin-bottom: 40px;">
+Blijf op de hoogte van onze inzet in Wageningen.
+</p>
     <div class="news-grid-home" id="home-news-container">
       <!-- Nieuwsitems komen hier -->
     </div>
+        <div style="text-align: center; margin-top: 20px;">
+  <a href="nieuws.html" class="btn btn-primary">Meer nieuwsberichten</a>
+</div>
+
+  </div>
+</section>
+<section class="team-section section-padding">
+  <div class="container">
+    <h2 style="text-align: center;">Maak kennis met onze raadsleden</h2>
+    <p style="text-align: center; max-width: 600px; margin: 0 auto 40px;">
+      Onze mensen staan midden in de Wageningse samenleving. Betrokken, herkenbaar en altijd bereikbaar.
+    </p>
+
+    <!-- AANGEPAST: 'Onze Mensen' sectie met ruimte voor foto's en 4 kolommen -->
+    <div class="team-grid" id="team-preview-container">
+      <!-- Wordt dynamisch geladen -->
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="fractie.html" class="btn btn-primary">Bekijk alle fractieleden</a>
+    </div>
+
+    <p id="fallback-team" style="text-align:center; display:none;">Teamleden konden niet worden geladen.</p>
   </div>
 </section>
 
 
-      <!-- AANGEPAST: 'Onze Mensen' sectie met ruimte voor foto's en 4 kolommen -->
-      <section class="team-section section-padding">
-        <div class="container">
-          <h2 class="section-title">Maak Kennis Met Ons</h2>
-          <p style="text-align: center; max-width: 600px; margin: 0 auto 40px">
-            Wij zijn een gedreven team met hart voor Wageningen! Wij gaan graag
-            met u in gesprek en neemt u dus gerust contact met ons op.
-          </p>
-          <!-- Aangepaste grid voor 4 teamleden -->
-          <div class="team-grid">
-            <div class="team-card">
-              <img src="images/Klaas.webp" alt="Foto van Klaas de Weerd" >
-              <h3>Klaas de Weerd</h3>
-              <p>Raadslid</p>
-            </div>
-            <div class="team-card">
-              <img src="images/Henk.webp" alt="Foto van Henk van Beek" >
-              <h3>Henk van Beek</h3>
-              <p>Raadslid</p>
-            </div>
-            <div class="team-card">
-              <img src="images/Rien.webp" alt="Foto van Rien Bor" >
-              <h3>Rien Bor</h3>
-              <p>Fractievoorzitter / Raadslid</p>
-            </div>
-            <div class="team-card">
-              <img
-                src="images/Otto.jpg"
-                alt="Foto van Marjolein van der Vlist"
-              >
-              <h3>Otto Vleemingen</h3>
-              <p>Raadslid</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- Call to Action (Behouden voor een duidelijke actieknop) -->
       <section class="cta section-padding">
         <div class="container text-center">
-          <h2>Doe mee met de Stadspartij!</h2>
-          <p>
-            Jouw stem en inbreng zijn belangrijk voor Wageningen. Word lid en
-            maak het verschil.
-          </p>
-          <a href="#" class="btn btn-light">Word nu lid</a>
+          <h2>Draag bij aan een beter Wageningen</h2>
+<p>
+  Jouw steun is onmisbaar. Ontdek op welke manieren jij kunt helpen om onze stad nog mooier te maken.
+</p>
+<a href="contact.html" class="btn btn-light">Neem contact met ons op</a>
         </div>
       </section>
     </main>
@@ -149,7 +151,50 @@
     <p>Website door <strong><a href="https://twinpixel.nl" target="_blank" rel="noopener noreferrer">TwinPixel</a></strong></p>
   </div>
 </footer>
+<!-- PLAATS DIT SCRIPT ONDERAAN JE BODY -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const mainNav = document.querySelector('.main-nav');
+    const dropDowns = document.querySelectorAll('.main-nav .dropdown');
 
+    // 1. Logica voor het openen en sluiten van het hoofdmenu
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('is-active');
+        mainNav.classList.toggle('is-active');
+
+        // Als het menu sluit, sluit dan ook alle submenus
+        if (!mainNav.classList.contains('is-active')) {
+            dropDowns.forEach(dropdown => {
+                dropdown.classList.remove('is-open');
+            });
+        }
+    });
+
+    // 2. Logica voor het openen en sluiten van de dropdowns (submenus)
+    dropDowns.forEach(dropdown => {
+        const dropBtn = dropdown.querySelector('.drop-btn');
+        
+        dropBtn.addEventListener('click', function(event) {
+            // Voorkom dat de link navigeert op mobiel
+            if (window.innerWidth <= 768) {
+                event.preventDefault();
+                
+                // Toggle de 'is-open' class op de huidige dropdown
+                const wasOpen = dropdown.classList.contains('is-open');
+
+                // Sluit eerst alle andere dropdowns
+                dropDowns.forEach(d => d.classList.remove('is-open'));
+
+                // Open de huidige dropdown als hij dicht was
+                if (!wasOpen) {
+                    dropdown.classList.add('is-open');
+                }
+            }
+        });
+    });
+});
+</script>
     <script>
 fetch('data/blogs-index.json')
   .then(res => res.json())
@@ -159,20 +204,45 @@ fetch('data/blogs-index.json')
 
     top3.forEach(item => {
       container.innerHTML += `
-        <article class="news-item">
-          <img src="${item.thumbnail || 'https://via.placeholder.com/400x250'}" alt="${item.title}">
-          <div class="news-content">
-            <h4>${item.title}</h4>
-            <p>${item.excerpt}</p>
-            <a href="${item.path}">Lees meer →</a>
-          </div>
-        </article>`;
+          <a href="${item.path}" class="news-item-link">
+            <article class="news-item">
+              <img src="${item.thumbnail || 'https://via.placeholder.com/400x250'}" alt="Nieuwsbericht">
+              <div class="news-content">
+                <h4>${item.title}</h4>
+                <p>${item.excerpt}</p>
+                <span class="read-more">Lees meer →</span>
+              </div>
+            </article>
+          </a>`;
     });
   })
   .catch(error => {
     console.error('Fout bij laden nieuws op homepage:', error);
   });
 </script>
+<script>
+fetch('/data/raadsleden-index.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('team-preview-container');
+    const preview = data.slice(0, 4); // max 4 personen tonen
+  // ...
+preview.forEach(lid => {
+  container.innerHTML += `
+    <a href="${lid.path}" class="team-card">
+      <img src="${lid.foto}" alt="Foto van ${lid.naam}">
+      <h3>${lid.naam}</h3>
+      <p>${lid.rol}</p>
+    </a>
+  `;
+});
+// ...
+  })
+  .catch(error => {
+    console.error('Fout bij laden teamleden:', error);
+    document.getElementById('fallback-team').style.display = 'block';
+  });
 
+</script>
   </body>
 </html>

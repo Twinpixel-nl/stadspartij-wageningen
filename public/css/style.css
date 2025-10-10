@@ -9,6 +9,7 @@
     --font-family-body: 'Lato', sans-serif;
 }
 
+
 body {
     font-family: var(--font-family-body);
     line-height: 1.7;
@@ -39,6 +40,24 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
 .section-padding-light { padding: 60px 0; background-color: var(--light-grey); }
 .section-title { text-align: center; margin-bottom: 40px; }
 
+/* --- Aanpassing voor de Introductie Sectie (om het 'mooi' te maken) --- */
+#intro {
+    background-color: var(--white); /* Zorgt voor een schone achtergrond */
+}
+
+#intro .container {
+    max-width: 850px; /* MAAK DE CONTENT SMALER dan de standaard 1100px */
+    text-align: center; /* CENTREER ALLE TEKST (h2 en p's) */
+}
+
+#intro h2 {
+    margin-bottom: 25px; /* Iets meer ruimte onder de hoofdtitel */
+}
+
+/* Je hebt al een 'lead' class, die perfect werkt met de centrering! */
+#intro p.lead {
+    margin-bottom: 20px; /* Ruimte tussen de twee paragrafen */
+}
 /* Header & Navigatie */
 .site-header {
     background: var(--white);
@@ -58,6 +77,7 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
 .logo img {
     max-height: 50px;
     width: auto;
+    margin-top: 5px;;
 }
 
 .main-nav ul {
@@ -79,6 +99,12 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
 
 .main-nav a:hover, .main-nav a.active {
     color: var(--primary-color);
+}
+
+/* Stijl voor de link binnen een actieve li */
+li.active > a {
+  color: var(--primary-color); /* Of een andere kleur die je wilt */
+  font-weight: bold; /* Optioneel, voor extra nadruk */
 }
 
 /* Hero Sectie (Homepage) */
@@ -133,7 +159,11 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
-
+/* Fix voor de klikbare team-kaart die zelf een link is */
+a.team-card {
+    text-decoration: none; /* Verwijder de onderstreping */
+    color: inherit;        /* Zorgt dat de tekst de juiste kleur krijgt */
+}
 /* Team Sectie (4 kolommen) */
 .team-grid {
     display: grid;
@@ -148,9 +178,14 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+/* --- Fix voor de link in de team-card --- */
+.team-card a {
+    text-decoration: none; /* Verwijder de onderstreping */
+    color: inherit;        /* Laat tekst de kleur van de h3/p overnemen */
+}
 .team-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+ box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
     border-color: var(--primary-color);
 }
 .team-card img {
@@ -166,16 +201,30 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
     font-size: 1.4rem;
 }
 .team-card p {
-    color: var(--medium-grey);
-    font-weight: 700;
+  font-weight: 400;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  color: #555;
+  font-style: italic;
 }
 
-/* Nieuws Sectie & Pagina */
+/* --- NIEUWS SECTIE & PAGINA (GECORRIGEERD) --- */
+
+/* 1. De container voor de nieuwskaarten */
 .news-grid-full {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
+
+/* 2. De link-wrapper die de hele kaart klikbaar maakt */
+a.news-item-link {
+    text-decoration: none; /* VERWIJDER ONDERSTREPING */
+    color: inherit;        /* NEGEER STANDAARD LINK-KLEUR */
+    display: flex;         /* Zorgt dat de kaart de volledige hoogte vult */
+}
+
+/* 3. De kaart zelf (de <article>) */
 .news-item {
     background: var(--white);
     border-radius: 8px;
@@ -183,19 +232,51 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
     border: 1px solid #eee;
     display: flex;
     flex-direction: column;
+    width: 100%; /* Zorgt dat de kaart de wrapper vult */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.news-item:hover {
+
+/* 4. Het hover-effect (op de link-wrapper) */
+a.news-item-link:hover .news-item {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     border-color: var(--primary-color);
 }
-.news-item img { width: 100%; height: 200px; object-fit: cover; }
-.news-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-.news-content h4 { margin-top: 0; font-size: 1.3rem; }
-.news-content p { flex-grow: 1; }
-.news-content a { color: var(--primary-color); text-decoration: none; font-weight: 700; align-self: flex-start; }
 
+/* 5. De afbeelding */
+.news-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* 6. De content-div en de tekstelementen */
+.news-content {
+    padding: 25px;
+    flex-grow: 1; /* Zorgt dat de content de resterende ruimte vult */
+    display: flex;
+    flex-direction: column;
+}
+
+.news-content h4 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: var(--dark-grey); /* ZEKER WETEN DE JUISTE KLEUR */
+}
+
+.news-content p {
+    flex-grow: 1;
+    color: var(--medium-grey); /* ZEKER WETEN DE JUISTE KLEUR */
+    margin-bottom: 20px;
+}
+
+/* 7. De "Lees meer" tekst (nu een <span>) */
+.news-content .read-more {
+    color: var(--primary-color); /* JOUW RODE KLEUR */
+    font-weight: 700;
+    align-self: flex-start;
+    margin-top: auto; /* Duwt de link naar de bodem */
+}
 /* ... (alle bestaande CSS-code) ... */
 
 /* --- Dropdown Navigatie --- */
@@ -331,7 +412,6 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
 @media (max-width: 768px) {
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
-    .main-nav { display: none; /* JS nodig voor een hamburgermenu */ }
     .grid, .news-grid-full { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .team-grid { grid-template-columns: repeat(2, 1fr); }
@@ -358,7 +438,200 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
   display: flex;
   flex-wrap: wrap;
 }
+/* --- KOPIEER VANAF HIER --- */
 
+/* --- Hamburger Menu Icon (Cleaner) --- */
+.hamburger {
+    display: none; /* Standaard verborgen op desktop */
+    flex-direction: column;
+    justify-content: space-around; /* Verdeelt de lijnen gelijkmatig */
+    width: 28px;
+    height: 28px; /* Iets meer ruimte */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101; /* Zorgt dat het icoon altijd boven de nav staat */
+}
+
+.hamburger:focus {
+    outline: none;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px; /* Iets dikkere lijnen voor duidelijkheid */
+    background: var(--dark-grey);
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+.hamburger.is-active span {
+    background: var(--primary-color);
+}
+/* Animatie voor openen/sluiten (X-vorm) */
+.hamburger.is-active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.hamburger.is-active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.is-active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* --- Responsieve Navigatie voor Mobiel (VOLLEDIGE FIX) --- */
+@media (max-width: 768px) {
+    .site-header .container {
+        justify-content: space-between;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* DE FIX VOOR ZICHTBAARHEID: .main-nav */
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Gebruik volledige schermhoogte */
+        background-color: var(--white);
+        z-index: 100;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* LIJN BOVENAAN UIT, NIET CENTREREN */
+        align-items: center;
+        
+        padding-top: 100px; /* Ruimte vanaf de bovenkant */
+        box-sizing: border-box; /* Zorgt dat padding de hoogte niet beïnvloedt */
+        overflow-y: auto;   /* Scrollen als het menu ooit te lang wordt */
+
+        /* Animatie eigenschappen */
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(100%); /* Start buiten beeld */
+        visibility: hidden;
+    }
+
+    .main-nav.is-active {
+        transform: translateX(0); /* Schuif in beeld */
+        visibility: visible;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+
+    .main-nav li {
+        margin: 15px 0; /* Iets meer ruimte tussen de items */
+    }
+
+    .main-nav a {
+        font-size: 1.8rem; /* Groter lettertype voor mobiel */
+        padding: 10px 0;
+        display: block;
+    }
+    
+    /* DE FIX VOOR DE UITKLAPBARE DROPDOWN */
+    .main-nav .dropdown {
+        position: static;
+    }
+
+    .main-nav .drop-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px; /* Ruimte tussen tekst en pijltje */
+    }
+
+    /* Pijltje voor de dropdown */
+    .main-nav .drop-btn::after {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        border: solid var(--dark-grey);
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        transition: transform 0.3s ease;
+    }
+    
+    /* Draai het pijltje als de dropdown open is */
+    .main-nav .dropdown.is-open .drop-btn::after {
+        transform: rotate(-135deg) translateY(4px);
+    }
+    
+    /* De dropdown content zelf (verborgen) */
+    .main-nav .dropdown-content {
+        position: static;
+        background-color: var(--light-grey);
+        box-shadow: none;
+        border-top: none;
+        border-radius: 0;
+        width: 100%;
+        margin-top: 15px;
+        
+        /* Verberg met max-height voor animatie */
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+    }
+    
+    /* Toon de dropdown content als de parent .is-open heeft */
+    .main-nav .dropdown.is-open .dropdown-content {
+        max-height: 300px; /* Voldoende hoogte voor de content */
+        opacity: 1;
+        padding: 10px 0;
+    }
+
+    .main-nav .dropdown-content a {
+        font-size: 1.2rem; /* Iets kleiner dan hoofditems */
+        font-weight: 400;
+        color: var(--medium-grey);
+        padding: 8px 0;
+    }
+/* --- KOPIEER TOT HIER --- */
+    .main-nav .drop-btn::after {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        border: solid var(--dark-grey);
+        border-width: 0 2px 2px 0;
+        transform: translateY(0px) rotate(45deg);
+        transition: transform 0.3s ease;
+        margin-left: 0;
+    }
+    .main-nav .dropdown.is-open .drop-btn::after {
+        transform: translateY(3px) rotate(-135deg);
+    }
+}
+
+/* Aanpassing desktop dropdowns zodat ze niet direct openen als je de menuknop raakt */
+.main-nav .dropdown:hover .dropdown-content {
+    /* Op desktop, behoud het hover gedrag */
+    /* Gebruik een media query om er zeker van te zijn dat dit alleen op desktop is */
+    @media (min-width: 769px) {
+        display: block;
+        /* Desktop dropdowns gebruiken nog steeds display: block/none */
+        /* Zorg dat de max-height/opacity van mobiel hier niet stoort */
+        max-height: none;
+        opacity: 1;
+    }
+}
+
+/* Aanpassing desktop dropdowns zodat ze niet direct openen als je de menuknop raakt */
+.main-nav .dropdown:hover .dropdown-content {
+    /* Op desktop, behoud het hover gedrag */
+    @media (min-width: 769px) {
+        display: block;
+    }
+}
 
 .blog-post-thumbnail {
   width: 100%;
@@ -372,3 +645,108 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
   min-width: 250px;
 }
 
+/* Profielpagina raadsleden */
+.raadslid-profiel {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'Lato', sans-serif;
+}
+
+.raadslid-profiel h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.raadslid-profiel .meta {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.raadslid-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.raadslid-foto {
+  flex: 0 0 250px;
+  max-width: 250px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.raadslid-bio {
+  flex: 1;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.raadslid-profiel a.btn {
+  margin-top: 2rem;
+  display: inline-block;
+}
+
+.raadslid-profiel a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  text-decoration: none;
+}
+
+.raadslid-profiel a:hover {
+  text-decoration: underline;
+}
+
+/* Responsief gedrag */
+@media (max-width: 768px) {
+  .raadslid-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .raadslid-bio {
+    text-align: center;
+  }
+}
+
+.blog-post img[src*="emoji"] {
+  max-width: 1.5em;
+  height: auto;
+  vertical-align: middle;
+  display: inline;
+}
+.pagination {
+  margin-top: 40px;
+  text-align: center;
+}
+.pagination a {
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 0 5px;
+  background: #eee;
+  color: #000;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.pagination a.active {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+@media (max-width: 576px) {
+  .team-card {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 576px) {
+  .container {
+    padding: 0 16px;
+  }
+}
