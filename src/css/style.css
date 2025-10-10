@@ -47,11 +47,12 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
 
 #intro .container {
     max-width: 850px; /* MAAK DE CONTENT SMALER dan de standaard 1100px */
-    text-align: center; /* CENTREER ALLE TEKST (h2 en p's) */
+    text-align: left; /* CENTREER ALLE TEKST (h2 en p's) */
 }
 
 #intro h2 {
     margin-bottom: 25px; /* Iets meer ruimte onder de hoofdtitel */
+    margin-left: 25px; /* Kleine marge links voor uitlijning met paragrafen */
 }
 
 /* Je hebt al een 'lead' class, die perfect werkt met de centrering! */
