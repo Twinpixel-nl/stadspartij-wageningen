@@ -146,7 +146,15 @@ function createBlogHtmlPage(data, markdownContent, marked) {
               </div>
             </li>
             <li><a href="/contact.html">Contact</a></li>
-          </ul>
+</ul>
+            <div class="social-icons">
+    <a href="https://www.facebook.com/StadspartijWageningen/" target="_blank" rel="noopener noreferrer" aria-label="Bezoek onze Facebook pagina">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/stadspartijwageningen/" target="_blank" rel="noopener noreferrer" aria-label="Bezoek onze Instagram pagina">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
         </nav>
     </div>
   </header>
@@ -277,7 +285,15 @@ function createRaadslidHtmlPage(data, markdownBioContent, marked) {
               </div>
             </li>
             <li><a href="/contact.html">Contact</a></li>
-          </ul>
+</ul>
+            <div class="social-icons">
+    <a href="https://www.facebook.com/StadspartijWageningen/" target="_blank" rel="noopener noreferrer" aria-label="Bezoek onze Facebook pagina">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/stadspartijwageningen/" target="_blank" rel="noopener noreferrer" aria-label="Bezoek onze Instagram pagina">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
         </nav>
     </div>
   </header>
