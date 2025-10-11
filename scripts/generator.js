@@ -130,7 +130,7 @@ function createBlogHtmlPage(data, markdownContent, marked) {
   <ul>
     <li><a href="/index.html">Home</a></li>
     <li><a href="/fractie.html">Fractie</a></li>
-    <li><a href="/nieuws.html">Nieuws class="active"</a></li>
+    <li><a href="/nieuws.html"class="active" >Nieuws</a></li>
     <li><a href="/ambassadeur.html">Word ambassadeur</a></li>
     <li class="dropdown">
       <a href="/#" class="drop-btn">Verkiezingen</a>
