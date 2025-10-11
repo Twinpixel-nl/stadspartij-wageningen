@@ -125,11 +125,11 @@ function createBlogHtmlPage(data, markdownContent, marked) {
       <div class="logo">
         <a href="/index.html"><img src="/images/logo.png" alt="Logo Stadspartij Wageningen" /></a>
       </div>
-      <nav class="main-nav">
+       <nav class="main-nav">
           <ul>
-            <li><a href="/index.html">Home</a></li>
+            <li><a href="/index.html" >Home</a></li>
             <li><a href="/fractie.html">Fractie</a></li>
-            <li><a href="/nieuws.html" class="active" >Nieuws</a></li>
+            <li><a href="/nieuws.html" class="active">Nieuws</a></li>
             <li><a href="/ambassadeur.html">Word ambassadeur</a></li>
             <li class="dropdown">
               <a href="/#" class="drop-btn">Verkiezingen</a>
@@ -146,17 +146,9 @@ function createBlogHtmlPage(data, markdownContent, marked) {
               </div>
             </li>
             <li><a href="/contact.html">Contact</a></li>
-</ul>
-            <div class="social-icons">
-    <a href="https://www.facebook.com/StadspartijWageningen/" target="_blank" rel="noopener noreferrer" aria-label="Bezoek onze Facebook pagina">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://www.instagram.com/stadspartijwageningen/" target="_blank" rel="noopener noreferrer" aria-label="Bezoek onze Instagram pagina">
-      <i class="fab fa-instagram"></i>
-    </a>
-  </div>
+          </ul>
         </nav>
-    </div>
+        </div>
   </header>
 
 <main class="container section-padding">
@@ -264,10 +256,10 @@ function createRaadslidHtmlPage(data, markdownBioContent, marked) {
       <div class="logo">
         <a href="/index.html"><img src="/images/logo.png" alt="Logo Stadspartij Wageningen" /></a>
       </div>
-      <nav class="main-nav">
+            <nav class="main-nav">
           <ul>
             <li><a href="/index.html">Home</a></li>
-            <li><a href="/fractie.html" class="active">Fractie</a></li>
+            <li><a href="/fractie.html">Fractie class="active"</a></li>
             <li><a href="/nieuws.html">Nieuws</a></li>
             <li><a href="/ambassadeur.html">Word ambassadeur</a></li>
             <li class="dropdown">
@@ -285,15 +277,7 @@ function createRaadslidHtmlPage(data, markdownBioContent, marked) {
               </div>
             </li>
             <li><a href="/contact.html">Contact</a></li>
-</ul>
-            <div class="social-icons">
-    <a href="https://www.facebook.com/StadspartijWageningen/" target="_blank" rel="noopener noreferrer" aria-label="Bezoek onze Facebook pagina">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://www.instagram.com/stadspartijwageningen/" target="_blank" rel="noopener noreferrer" aria-label="Bezoek onze Instagram pagina">
-      <i class="fab fa-instagram"></i>
-    </a>
-  </div>
+          </ul>
         </nav>
     </div>
   </header>
