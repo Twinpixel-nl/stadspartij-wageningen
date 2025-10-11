@@ -128,6 +128,11 @@ function createBlogHtmlPage(data, markdownContent, marked) {
       <div class="logo">
         <a href="/index.html"><img src="/images/logo.png" alt="Logo Stadspartij Wageningen" /></a>
       </div>
+      <button class="hamburger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 <!-- AANGEPASTE NAVIGATIEBALK -->
 <nav class="main-nav">
   <ul>
@@ -331,6 +336,11 @@ function createRaadslidHtmlPage(data, markdownBioContent, marked) {
       <div class="logo">
         <a href="/index.html"><img src="/images/logo.png" alt="Logo Stadspartij Wageningen" /></a>
       </div>
+      <button class="hamburger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
           <!-- AANGEPASTE NAVIGATIEBALK -->
 <nav class="main-nav">
   <ul>
