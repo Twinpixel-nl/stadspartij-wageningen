@@ -77,7 +77,10 @@ function createBlogHtmlPage(data, markdownContent, marked) {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
-
+   <link rel="manifest" href="images/favicon/site.webmanifest">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Open Graph (Facebook, LinkedIn) -->
   <meta property="og:title" content="${data.title}" />
   <meta property="og:description" content="${data.excerpt || data.title}" />
@@ -185,7 +188,71 @@ function createBlogHtmlPage(data, markdownContent, marked) {
       <p>Website door <strong><a href="https://twinpixel.nl" target="_blank" rel="noopener noreferrer">TwinPixel</a></strong></p>
     </div>
   </footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const mainNav = document.querySelector('.main-nav');
+    const dropDowns = document.querySelectorAll('.main-nav .dropdown');
 
+    // 1. Logica voor het openen en sluiten van het hoofdmenu
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('is-active');
+        mainNav.classList.toggle('is-active');
+
+        // Als het menu sluit, sluit dan ook alle submenus
+        if (!mainNav.classList.contains('is-active')) {
+            dropDowns.forEach(dropdown => {
+                dropdown.classList.remove('is-open');
+            });
+        }
+    });
+
+    // 2. Logica voor het openen en sluiten van de dropdowns (submenus)
+    dropDowns.forEach(dropdown => {
+        const dropBtn = dropdown.querySelector('.drop-btn');
+        
+        dropBtn.addEventListener('click', function(event) {
+            // Voorkom dat de link navigeert op mobiel
+            if (window.innerWidth <= 768) {
+                event.preventDefault();
+                
+                // Toggle de 'is-open' class op de huidige dropdown
+                const wasOpen = dropdown.classList.contains('is-open');
+
+                // Sluit eerst alle andere dropdowns
+                dropDowns.forEach(d => d.classList.remove('is-open'));
+
+                // Open de huidige dropdown als hij dicht was
+                if (!wasOpen) {
+                    dropdown.classList.add('is-open');
+                }
+            }
+        });
+    });
+});
+</script>
+<script>
+    // Script om de actieve link in de navigatie te markeren
+document.addEventListener("DOMContentLoaded", function() {
+  const currentPage = window.location.pathname.split("/").pop();
+  if (currentPage === "") {
+    currentPage = "index.html";
+  }
+  const navLinks = document.querySelectorAll('nav a'); // Of bv. '.navbar a'
+  navLinks.forEach(link => {
+    const linkPage = link.getAttribute('href').split("/").pop();
+    if (linkPage === currentPage) {
+      const parentLi = link.closest('li');
+      const dropdownParent = link.closest('.dropdown');
+      if (dropdownParent) {
+        dropdownParent.classList.add('active');
+      } else if (parentLi) {
+        parentLi.classList.add('active');
+      }
+    }
+  });
+});
+</script>
   <script src="/js/main.js"></script>
 </body>
 </html>`;
@@ -220,7 +287,11 @@ function createRaadslidHtmlPage(data, markdownBioContent, marked) {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
-
+ <link rel="manifest" href="images/favicon/site.webmanifest">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
   <!-- Open Graph -->
   <meta property="og:title" content="${data.naam} – ${data.rol}" />
   <meta property="og:description" content="Profiel van ${data.naam}, ${data.rol}" />
@@ -321,7 +392,71 @@ function createRaadslidHtmlPage(data, markdownBioContent, marked) {
       <p>Website door <strong><a href="https://twinpixel.nl" target="_blank" rel="noopener noreferrer">TwinPixel</a></strong></p>
     </div>
   </footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const mainNav = document.querySelector('.main-nav');
+    const dropDowns = document.querySelectorAll('.main-nav .dropdown');
 
+    // 1. Logica voor het openen en sluiten van het hoofdmenu
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('is-active');
+        mainNav.classList.toggle('is-active');
+
+        // Als het menu sluit, sluit dan ook alle submenus
+        if (!mainNav.classList.contains('is-active')) {
+            dropDowns.forEach(dropdown => {
+                dropdown.classList.remove('is-open');
+            });
+        }
+    });
+
+    // 2. Logica voor het openen en sluiten van de dropdowns (submenus)
+    dropDowns.forEach(dropdown => {
+        const dropBtn = dropdown.querySelector('.drop-btn');
+        
+        dropBtn.addEventListener('click', function(event) {
+            // Voorkom dat de link navigeert op mobiel
+            if (window.innerWidth <= 768) {
+                event.preventDefault();
+                
+                // Toggle de 'is-open' class op de huidige dropdown
+                const wasOpen = dropdown.classList.contains('is-open');
+
+                // Sluit eerst alle andere dropdowns
+                dropDowns.forEach(d => d.classList.remove('is-open'));
+
+                // Open de huidige dropdown als hij dicht was
+                if (!wasOpen) {
+                    dropdown.classList.add('is-open');
+                }
+            }
+        });
+    });
+});
+</script>
+<script>
+    // Script om de actieve link in de navigatie te markeren
+document.addEventListener("DOMContentLoaded", function() {
+  const currentPage = window.location.pathname.split("/").pop();
+  if (currentPage === "") {
+    currentPage = "index.html";
+  }
+  const navLinks = document.querySelectorAll('nav a'); // Of bv. '.navbar a'
+  navLinks.forEach(link => {
+    const linkPage = link.getAttribute('href').split("/").pop();
+    if (linkPage === currentPage) {
+      const parentLi = link.closest('li');
+      const dropdownParent = link.closest('.dropdown');
+      if (dropdownParent) {
+        dropdownParent.classList.add('active');
+      } else if (parentLi) {
+        parentLi.classList.add('active');
+      }
+    }
+  });
+});
+</script>
   <script src="/js/main.js"></script>
 </body>
 </html>`;
