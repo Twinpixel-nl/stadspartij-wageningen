@@ -127,25 +127,25 @@ function createBlogHtmlPage(data, markdownContent, marked) {
       </div>
       <nav class="main-nav">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="fractie.html">Fractie</a></li>
-            <li><a href="nieuws.html" class="active" >Nieuws</a></li>
-            <li><a href="ambassadeur.html">Word ambassadeur</a></li>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/fractie.html">Fractie</a></li>
+            <li><a href="/nieuws.html" class="active" >Nieuws</a></li>
+            <li><a href="/ambassadeur.html">Word ambassadeur</a></li>
             <li class="dropdown">
-              <a href="#" class="drop-btn">Verkiezingen</a>
+              <a href="/#" class="drop-btn">Verkiezingen</a>
               <div class="dropdown-content">
-                <a href="samenvatting-verkiezingsprogramma.html"
+                <a href="/samenvatting-verkiezingsprogramma.html"
                   >Samenvatting Programma</a
                 >
-                <a href="verkiezingsprogramma-compleet.html"
+                <a href="/verkiezingsprogramma-compleet.html"
                   >Volledig Programma</a
                 >
-                <!-- <a href="kieslijst.html">Kieslijst</a> -->
-                <!-- <a href="stellingen-stemwijzer.html">Stellingen Stemwijzer</a> -->
-                <a href="stellingen-mijnstem.html">Stellingen Stemwijzer</a>
+                <!-- <a href="/kieslijst.html">Kieslijst</a> -->
+                <!-- <a href="/stellingen-stemwijzer.html">Stellingen Stemwijzer</a> -->
+                <a href="/stellingen-mijnstem.html">Stellingen Stemwijzer</a>
               </div>
             </li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/contact.html">Contact</a></li>
           </ul>
         </nav>
     </div>
@@ -258,25 +258,25 @@ function createRaadslidHtmlPage(data, markdownBioContent, marked) {
       </div>
       <nav class="main-nav">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="fractie.html" class="active">Fractie</a></li>
-            <li><a href="nieuws.html">Nieuws</a></li>
-            <li><a href="ambassadeur.html">Word ambassadeur</a></li>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/fractie.html" class="active">Fractie</a></li>
+            <li><a href="/nieuws.html">Nieuws</a></li>
+            <li><a href="/ambassadeur.html">Word ambassadeur</a></li>
             <li class="dropdown">
-              <a href="#" class="drop-btn">Verkiezingen</a>
+              <a href="/#" class="drop-btn">Verkiezingen</a>
               <div class="dropdown-content">
-                <a href="samenvatting-verkiezingsprogramma.html"
+                <a href="/samenvatting-verkiezingsprogramma.html"
                   >Samenvatting Programma</a
                 >
-                <a href="verkiezingsprogramma-compleet.html"
+                <a href="/verkiezingsprogramma-compleet.html"
                   >Volledig Programma</a
                 >
-                <!-- <a href="kieslijst.html">Kieslijst</a> -->
-                <!-- <a href="stellingen-stemwijzer.html">Stellingen Stemwijzer</a> -->
-                <a href="stellingen-mijnstem.html">Stellingen Stemwijzer</a>
+                <!-- <a href="/kieslijst.html">Kieslijst</a> -->
+                <!-- <a href="/stellingen-stemwijzer.html">Stellingen Stemwijzer</a> -->
+                <a href="/stellingen-mijnstem.html">Stellingen Stemwijzer</a>
               </div>
             </li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/contact.html">Contact</a></li>
           </ul>
         </nav>
     </div>
