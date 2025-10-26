@@ -4,6 +4,7 @@ rol: Raadslid
 volgorde: 2
 foto: /images/uploads/stadspartij004-2-ezgif.com-webp-to-jpg-converter.jpg
 email: klaas@stadspartijwageningen.nl
+linkedin: https://www.linkedin.com/in/klaas-de-weerd-45807051/
 ---
 <!--StartFragment-->
 
