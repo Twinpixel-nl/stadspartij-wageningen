@@ -1,30 +1,79 @@
 <!DOCTYPE html>
 <html lang="nl">
-  <head>
-    <meta charset="UTF-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <title>Stadspartij Wageningen - Lokaal en Betrokken</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../images/favicon/site.webmanifest">
-    <link rel="stylesheet" href="css/style.css" >
-    <link rel="preconnect" href="https://fonts.googleapis.com" >
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Lato:wght@400;700&display=swap"
-      rel="stylesheet"
-    >
-  </head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TSVWXHEL6X"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  gtag('config', 'G-TSVWXHEL6X');
-</script>
+  <title>Stadspartij Wageningen - Lokaal en Betrokken</title>
+
+  <!-- Basis SEO -->
+  <meta name="description"
+        content="Stadspartij Wageningen is een lokale, onafhankelijke partij die zich inzet voor een realistische, sociale en gezonde koers voor onze stad. Lees meer over onze raadsleden, standpunten en nieuws.">
+  <meta name="robots" content="index,follow">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://stadspartijwageningen.nl/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:site_name" content="Stadspartij Wageningen">
+  <meta property="og:title" content="Stadspartij Wageningen - Lokaal en Betrokken">
+  <meta property="og:description"
+        content="Lokale, onafhankelijke partij voor een realistische, sociale en gezonde koers in Wageningen.">
+  <meta property="og:url" content="https://stadspartijwageningen.nl/">
+  <meta property="og:image" content="https://stadspartijwageningen.nl/images/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Stadspartij Wageningen - Lokaal en Betrokken">
+  <meta name="twitter:description"
+        content="Blijf op de hoogte van het laatste nieuws, de fractie en standpunten van Stadspartij Wageningen.">
+  <meta name="twitter:image" content="https://stadspartijwageningen.nl/images/og-image.jpg">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Stadspartij Wageningen",
+    "url": "https://stadspartijwageningen.nl/",
+    "logo": "https://stadspartijwageningen.nl/images/logo.png",
+    "sameAs": [
+      "https://www.facebook.com/StadspartijWageningen/",
+      "https://www.instagram.com/stadspartijwageningen/"
+    ]
+  }
+  </script>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+
+  <!-- Fonts & CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9R..."
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TSVWXHEL6X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TSVWXHEL6X');
+  </script>
+</head>
   <body>
     <header class="site-header">
       <div class="container">
@@ -38,29 +87,33 @@
             <span></span>
             <span></span>
         </button>
-        <nav class="main-nav">
-          <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="fractie.html">Fractie</a></li>
-            <li><a href="nieuws.html">Nieuws</a></li>
-            <li><a href="ambassadeur.html">Word ambassadeur</a></li>
-            <li class="dropdown">
-              <a href="#" class="drop-btn">Verkiezingen</a>
-              <div class="dropdown-content">
-                <a href="samenvatting-verkiezingsprogramma.html"
-                  >Samenvatting Programma</a
-                >
-                <a href="verkiezingsprogramma-compleet.html"
-                  >Volledig Programma</a
-                >
-                <!-- <a href="kieslijst.html">Kieslijst</a> -->
-                <!-- <a href="stellingen-stemwijzer.html">Stellingen Stemwijzer</a> -->
-                <a href="stellingen-mijnstem.html">Stellingen Stemwijzer</a>
-              </div>
-            </li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </nav>
+<!-- AANGEPASTE NAVIGATIEBALK -->
+<nav class="main-nav">
+  <ul>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="fractie.html">Fractie</a></li>
+    <li><a href="nieuws.html">Nieuws</a></li>
+    <li><a href="ambassadeur.html">Word ambassadeur</a></li>
+    <li class="dropdown">
+      <a href="#" class="drop-btn">Verkiezingen</a>
+      <div class="dropdown-content">
+        <a href="samenvatting-verkiezingsprogramma.html">Samenvatting Programma</a>
+        <a href="verkiezingsprogramma-compleet.html">Volledig Programma</a>
+        <a href="stellingen-mijnstem.html">Stellingen Stemwijzer</a>
+      </div>
+    </li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <!-- NIEUW: Social Media Iconen -->
+  <div class="social-icons">
+    <a href="https://www.facebook.com/StadspartijWageningen/" target="_blank" rel="noopener noreferrer" aria-label="Bezoek onze Facebook pagina">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/stadspartijwageningen/" target="_blank" rel="noopener noreferrer" aria-label="Bezoek onze Instagram pagina">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+</nav>
       </div>
     </header>
     <main>
@@ -86,7 +139,7 @@
       ze niet kan waarmaken en transparant is over besluiten. En we staan
       voor een gemeente die niet meer geld uitgeeft dan er in huis is.
     </p>
-    <p>
+    <p class="lead">
       De Stadspartij staat ook voor een sociaal beleid, met aandacht voor
       passende zorg voor jong en oud en woningen voor starters, ouderen,
       studenten en nieuwkomers. We zetten ons in voor een binnenstad die

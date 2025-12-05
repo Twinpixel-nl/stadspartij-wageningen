@@ -47,11 +47,12 @@ p.lead { font-size: 1.2rem; color: var(--medium-grey); max-width: 800px; margin-
 
 #intro .container {
     max-width: 850px; /* MAAK DE CONTENT SMALER dan de standaard 1100px */
-    text-align: center; /* CENTREER ALLE TEKST (h2 en p's) */
+    text-align: left; /* CENTREER ALLE TEKST (h2 en p's) */
 }
 
 #intro h2 {
     margin-bottom: 25px; /* Iets meer ruimte onder de hoofdtitel */
+    margin-left: 25px; /* Kleine marge links voor uitlijning met paragrafen */
 }
 
 /* Je hebt al een 'lead' class, die perfect werkt met de centrering! */
@@ -749,4 +750,76 @@ a.news-item-link:hover .news-item {
   .container {
     padding: 0 16px;
   }
+}
+/* ==========================================================================
+   Social Media Iconen in Navigatie
+   ========================================================================== */
+
+/* Maak van de navigatiebalk een flex-container om de lijst en iconen te verdelen */
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Zorgt voor ruimte ertussen op grotere schermen */
+}
+
+.main-nav ul {
+  margin-right: 5px; /* Duwt de iconen naar rechts */
+}
+
+/* Stijl voor de container van de iconen */
+.social-icons {
+  display: flex;
+  align-items: center;
+  margin-left: 15px; /* Ruimte tussen "Contact" en de iconen */
+}
+
+/* Stijl voor de individuele iconen */
+.social-icons a {
+  color: var(--primary-color); /* Wit, net als de andere menu-items */
+  font-size: 1.2rem; /* Iets groter dan de tekst voor goede zichtbaarheid */
+  padding: 10px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--dark-grey); /* De groene kleur van de partij bij hover */
+  transform: scale(1.1); /* Maakt het icoon iets groter bij hover */
+}
+
+/* Aanpassingen voor de mobiele weergave (hamburger menu) */
+@media (max-width: 768px) {
+  .main-nav {
+    flex-direction: column; /* Zet alles onder elkaar in het mobiele menu */
+    align-items: flex-start; /* Lijn links uit */
+  }
+
+  .main-nav ul {
+    margin-right: 0; /* Reset de marge */
+  }
+
+  .social-icons {
+    margin-left: 0; /* Reset de marge */
+    margin-top: 20px; /* Ruimte boven de iconen in het mobiele menu */
+    padding-left: 15px; /* Zorg voor uitlijning met de menu-items */
+  }
+}
+/* ==========================================================================
+   Social Media Iconen op Contact Pagina
+   ========================================================================== */
+
+.contact-socials {
+  margin-top: 15px; /* Wat ruimte onder de paragraaf */
+  display: flex;    /* Zet de iconen naast elkaar */
+  gap: 20px;        /* Ruimte tussen de iconen */
+}
+
+.contact-socials a {
+  color: var(--primary-color);   /* Gebruik de primaire groene kleur */
+  font-size: 1.8rem; /* Maak de iconen lekker groot en klikbaar */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-socials a:hover {
+  color: var(--dark-grey);          /* Een donkere kleur voor de hover-staat */
+  transform: scale(1.1); /* Hetzelfde subtiele groei-effect */
 }
