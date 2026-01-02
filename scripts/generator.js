@@ -483,7 +483,7 @@ function copyStaticFiles() {
     "contact.html", "fractie.html", "index.html", "kieslijst.html", "nieuws.html",
     "samenvatting-verkiezingsprogramma.html", "stellingen-mijnstem.html",
     "stellingen-stemwijzer.html", "verkiezingsprogramma-compleet.html",
-    "verkiezingsprogramma.html", "ambassadeur.html", "robots.txt", "sitemap.xml"
+    "verkiezingsprogramma.html", "ambassadeur.html", "robots.txt", "sitemap.xml", "verkiezingsprogramma-engels.html"
   ];
   const dirsToCopy = ["css", "js", "images"];
 
