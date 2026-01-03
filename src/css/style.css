@@ -931,3 +931,7 @@ a.news-item-link:hover .news-item {
   opacity: .75;
   font-style: italic;
 }
+.toc {
+  list-style: none;
+  padding-left: 0;
+}
