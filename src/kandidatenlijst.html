@@ -13,37 +13,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    /* Uitklap gedrag voor 1 t/m 8, zonder je bestaande layout kapot te maken */
-    .team-card .candidate-name-btn{
-      all: unset;
-      cursor: pointer;
-      display: inline-block;
-      width: 100%;
-    }
-    .team-card .candidate-name-btn h3{
-      margin: 0;
-    }
-    .candidate-details{
-      display: none;
-      margin-top: 12px;
-      text-align: left;
-    }
-    .team-card.is-open .candidate-details{
-      display: block;
-    }
-    .candidate-details img{
-      width: 100%;
-      max-width: 220px;
-      border-radius: 12px;
-      display: block;
-      margin-bottom: 10px;
-    }
-    .candidate-details p{
-      margin: 0;
-      white-space: pre-line; /* behoud alinea’s zonder <br> spam */
-    }
+    /* Brondata (foto+tekst) blijft in HTML, maar nooit zichtbaar in grid */
+    .candidate-details{ display:none; }
 
-    /* Simpele lijst voor 9+ */
+    /* Overige kandidaten lijst */
     .candidate-list{
       margin-top: 28px;
     }
@@ -54,6 +27,75 @@
       margin: 0;
       padding-left: 20px;
       line-height: 1.7;
+    }
+
+    /* Tegels */
+    .team-card{
+      cursor: pointer;
+      transition: transform .15s ease;
+    }
+    .team-card:hover{
+      transform: translateY(-2px);
+    }
+
+    /* Modal */
+    .modal-overlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 9999;
+    }
+    .modal-overlay.is-open{ display:flex; }
+
+    .modal{
+      background: #fff;
+      width: min(920px, 100%);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+    .modal-header{
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      padding: 16px 18px;
+      border-bottom: 1px solid #eee;
+    }
+    .modal-title{ margin:0; font-size: 22px; }
+    .modal-close{
+      border: 0;
+      background: transparent;
+      font-size: 28px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 6px;
+    }
+
+    .modal-body{
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 18px;
+      padding: 18px;
+      max-height: 70vh;
+      overflow: auto;
+    }
+    .modal-body img{
+      width: 100%;
+      border-radius: 12px;
+      display:block;
+    }
+    .modal-body p{
+      margin: 0;
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+
+    @media (max-width: 700px){
+      .modal-body{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -112,14 +154,11 @@
 
   <section class="team-section section-padding">
     <div class="container">
-      <div class="team-grid">
 
+      <div class="team-grid">
         <!-- 1 -->
         <div class="team-card" data-candidate>
-          <button class="candidate-name-btn" type="button" aria-expanded="false">
-            <h3>1. Rien Bor</h3>
-          </button>
-
+          <h3>1. Rien Bor</h3>
           <div class="candidate-details">
             <img src="images/verkiezingrien.png" alt="Rien Bor">
             <p>Wageningen is mij lief omdat het een ideale mix is tussen een stad en een dorp in een fantastische en gevarieerde omgeving. Bovendien eeuwig jong door de jaarlijkse aanwas van nieuwe en jonge (internationale) studenten. Mooi om zo’n stad als lid van de Stadspartij te mogen besturen. Ik denk wel eens: “Eigenlijk is de Stadspartij geen politieke partij. De Stadspartij is meer een beweging die opkomt voor een fijne leef- werk- en woonomgeving in Wageningen en opkomt voor de belangen van haar inwoners. We hebben weleens overwogen de naam te veranderen in ‘Stadsbeweging’. Maar dat klinkt niet, vinden we. Bovendien: het zit in de naam! Daarom blijft de Stadspartij gewoon zo heten en blijf ik me gewoon inzetten voor alle inwoners van Wageningen. Want besturen is leuk, maar inwoners helpen nog leuker.</p>
@@ -128,10 +167,7 @@
 
         <!-- 2 -->
         <div class="team-card" data-candidate>
-          <button class="candidate-name-btn" type="button" aria-expanded="false">
-            <h3>2. Jelmer van der Neut</h3>
-          </button>
-
+          <h3>2. Jelmer van der Neut</h3>
           <div class="candidate-details">
             <img src="images/verkiezingjelmer.png" alt="Jelmer van der Neut">
             <p>Wageningen is mij lief! Toen ik een poos geleden in Wageningen kwam wonen voelde ik mij meteen thuis. Ik leerde de omgeving en de mensen kennen, altijd opzoek naar het echte Wageningse gevoel. De afgelopen jaren heb ik veel geluisterd. Door te luisteren naar wat er leeft en speelt zie je pas echt de stad.
@@ -142,10 +178,7 @@ Als het gaat om bereikbaarheid, parkeren of groenonderhoud: we zetten de nadruk 
 
         <!-- 3 -->
         <div class="team-card" data-candidate>
-          <button class="candidate-name-btn" type="button" aria-expanded="false">
-            <h3>3. Linda van Olderen</h3>
-          </button>
-
+          <h3>3. Linda van Olderen</h3>
           <div class="candidate-details">
             <img src="images/verkiezinglinda.png" alt="Linda van Olderen">
             <p>Wageningen zit in mijn hart. Het is de plek waar ik opgroeide, me thuis voel en waar ik me wil inzetten voor de toekomst. Van mijn eerste danspassen in De Pomhorst tot mijn eerste stappen in de lokale politiek: Wageningen heeft mij gevormd.
@@ -157,10 +190,7 @@ Daar wil ik me met betrokkenheid en energie hard voor maken. Omdat Wageningen mi
 
         <!-- 4 -->
         <div class="team-card" data-candidate>
-          <button class="candidate-name-btn" type="button" aria-expanded="false">
-            <h3>4. Otto Vleeming</h3>
-          </button>
-
+          <h3>4. Otto Vleeming</h3>
           <div class="candidate-details">
             <img src="images/verkiezingotto.png" alt="Otto Vleeming">
             <p>Sinds jonge leeftijd woon ik in Wageningen en ik voel me heel betrokken bij de stad. Vooral het sociaal domein heeft mijn aandacht. Het is heel belangrijk om inwoners die het minder hebben of die niet voor zichzelf kunnen opkomen een kans te geven om volwaardig mee te doen in de samenleving. Daarnaast is sociale huisvesting belangrijk. Er is jarenlang te weinig gebouwd op dat gebied. Ook het onderhoud van dergelijke woningen laat veel te wensen over. Ook de veiligheid op straat heeft mijn aandacht. En met veiligheid bedoel ik een goede inrichting van de openbare ruimte, goed onderhouden voetpaden, goede verlichting en onderhoud van het openbaar groen. Ik ben actief bij de Stadspartij omdat ik veel waarde hecht aan betrouwbaarheid in de politiek: zeggen wat je doet, en doen wat je zegt. Ik kan slecht tegen onrecht. Wageningen is mij lief vanwege de mooie groene omgeving van Wageningen, de gezellige binnenstad en de grote diversiteit aan inwoners.</p>
@@ -169,10 +199,7 @@ Daar wil ik me met betrokkenheid en energie hard voor maken. Omdat Wageningen mi
 
         <!-- 5 -->
         <div class="team-card" data-candidate>
-          <button class="candidate-name-btn" type="button" aria-expanded="false">
-            <h3>5. Eric Langhorst</h3>
-          </button>
-
+          <h3>5. Eric Langhorst</h3>
           <div class="candidate-details">
             <img src="images/verkiezingeric.png" alt="Eric Langhorst">
             <p>Wageningen is me lief. Het is mijn geboortestad en de stad waar ik een fijne jeugd heb gehad. Na het Wagenings Lyceum woonde ik een paar jaar in de VS, waar ik bedrijfskunde studeerde. Sport is belangrijk voor mij: ik zwem veel en was jarenlang actief bij WZ&PC De Rijn als zwemmer en trainer.
@@ -183,10 +210,7 @@ Mijn interesses liggen bij financiën en duidelijke communicatie van de gemeente
 
         <!-- 6 -->
         <div class="team-card" data-candidate>
-          <button class="candidate-name-btn" type="button" aria-expanded="false">
-            <h3>6. Henk van de Beek</h3>
-          </button>
-
+          <h3>6. Henk van de Beek</h3>
           <div class="candidate-details">
             <img src="images/verkiezinghenk.png" alt="Henk van de Beek">
             <p>Mijn naam is Henk van de Beek en ik woon al bijna mijn hele leven in Wageningen. Na mijn actieve loopbaan als Marine Officier heb ik mij jarenlang in gezet voor de herdenking van 4 en 5 mei in Wageningen. Nu mag ik sinds mei 2025 raadslid voor de Stadspartij zijn.
@@ -198,10 +222,7 @@ Ik kijk ernaar uit om mij namens de Stadspartij in te zetten voor de inwoners va
 
         <!-- 7 -->
         <div class="team-card" data-candidate>
-          <button class="candidate-name-btn" type="button" aria-expanded="false">
-            <h3>7. Berdien Snijder</h3>
-          </button>
-
+          <h3>7. Berdien Snijder</h3>
           <div class="candidate-details">
             <img src="images/verkiezingberdien.png" alt="Berdien Snijder">
             <p>Als geboren en getogen Wageningse voel ik mij sterk verbonden met ‘het Verhaal van Wageningen’; de geschiedenis, tradities en verhalen die onze stad maken tot wat de stad nu is. Mijn speciale aandacht gaat uit naar ons cultureel erfgoed, zowel materieel als immaterieel. Van monumenten tot verhalen en initiatieven die van generatie op generatie worden doorgegeven: het zijn deze elementen die onze stad kleur geven en ons met elkaar verbinden. Ik geloof dat het koesteren en zichtbaar maken van dit erfgoed essentieel is voor een sterke, levendige gemeenschap. Als raadslid wil ik mij inzetten voor een fijne en leefbare stad voor alle inwoners; een stad waarin we ruimte geven aan cultuur, duurzaamheid en elkaar. Wageningen is een plaats waar mensen met diverse achtergronden samenkomen; dat maakt ons uniek. Maar om de stad leefbaar te houden moeten we wel zorgen dat er voldoende woningen zijn, het groen om de stad ook groen blijft en de (binnen)stad bereikbaar blijft. Ik kijk ernaar uit om samen met inwoners, organisaties en mede-raadsleden te werken aan een stad die haar verleden koestert en haar toekomst met vertrouwen tegemoet treedt.</p>
@@ -210,10 +231,7 @@ Ik kijk ernaar uit om mij namens de Stadspartij in te zetten voor de inwoners va
 
         <!-- 8 -->
         <div class="team-card" data-candidate>
-          <button class="candidate-name-btn" type="button" aria-expanded="false">
-            <h3>8. Wilko Karel</h3>
-          </button>
-
+          <h3>8. Wilko Karel</h3>
           <div class="candidate-details">
             <img src="images/verkiezingwilko.png" alt="Wilko Karel">
             <p>Na de vorige periode als raadslid actief te zijn geweest, dacht ik afscheid te nemen van de politiek. Het is echter nooit uit mijn gedachten verdwenen. Nu is het moment gekomen om weer als kandidaat raadslid van de Stadspartij aan de slag te gaan.
@@ -221,7 +239,6 @@ Momenteel ben ik werkzaam in de Jeugdzorg. Mijn focus is in eerste instantie ger
 Ruim 40 jaar woon ik in Wageningen. In mijn vrije tijd trek ik er graag op uit om van de mooie natuur in Wageningen en de omgeving te genieten.</p>
           </div>
         </div>
-
       </div>
 
       <!-- 9+ lijst -->
@@ -279,12 +296,27 @@ Ruim 40 jaar woon ik in Wageningen. In mijn vrije tijd trek ik er graag op uit o
   </div>
 </footer>
 
+<!-- Modal (1x) -->
+<div class="modal-overlay" id="candidateModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-header">
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <button class="modal-close" type="button" aria-label="Sluiten" id="modalClose">×</button>
+    </div>
+    <div class="modal-body">
+      <img id="modalImg" alt="">
+      <p id="modalText"></p>
+    </div>
+  </div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const hamburger = document.querySelector('.hamburger');
   const mainNav = document.querySelector('.main-nav');
   const dropDowns = document.querySelectorAll('.main-nav .dropdown');
 
+  // Menu
   hamburger.addEventListener('click', function() {
     hamburger.classList.toggle('is-active');
     mainNav.classList.toggle('is-active');
@@ -294,9 +326,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  // Dropdowns mobiel
   dropDowns.forEach(dropdown => {
     const dropBtn = dropdown.querySelector('.drop-btn');
-
     dropBtn.addEventListener('click', function(event) {
       if (window.innerWidth <= 768) {
         event.preventDefault();
@@ -307,13 +339,51 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Uitklappen bij de eerste 8 kandidaten
-  const cards = document.querySelectorAll('[data-candidate]');
-  cards.forEach(card => {
-    const btn = card.querySelector('.candidate-name-btn');
-    btn.addEventListener('click', () => {
-      const isOpen = card.classList.toggle('is-open');
-      btn.setAttribute('aria-expanded', String(isOpen));
+  // Modal logica
+  const modalOverlay = document.getElementById('candidateModal');
+  const modalClose = document.getElementById('modalClose');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalImg = document.getElementById('modalImg');
+  const modalText = document.getElementById('modalText');
+
+  function openModal({ name, imgSrc, imgAlt, text }) {
+    modalTitle.textContent = name;
+    modalImg.src = imgSrc;
+    modalImg.alt = imgAlt || name;
+    modalText.textContent = text;
+
+    modalOverlay.classList.add('is-open');
+    modalOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modalOverlay.classList.remove('is-open');
+    modalOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  modalClose.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalOverlay.classList.contains('is-open')) closeModal();
+  });
+
+  // Koppel de 8 cards
+  document.querySelectorAll('[data-candidate]').forEach(card => {
+    const name = card.querySelector('h3')?.textContent?.trim() || '';
+    const img = card.querySelector('.candidate-details img');
+    const text = card.querySelector('.candidate-details p')?.textContent?.trim() || '';
+
+    card.addEventListener('click', () => {
+      openModal({
+        name,
+        imgSrc: img?.getAttribute('src') || '',
+        imgAlt: img?.getAttribute('alt') || name,
+        text
+      });
     });
   });
 });
