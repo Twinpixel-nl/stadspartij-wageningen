@@ -932,26 +932,25 @@ a.news-item-link:hover .news-item{
   border-color: var(--primary-color);
 }
 
-/* Image wrapper: zorgt voor vaste verhouding zonder croppen */
+/* new-style thumbs: niks afsnijden, wel consistente cards */
 .news-item .news-thumb{
   width: 100%;
-  aspect-ratio: 16 / 9;      /* pas aan naar 4/3 als je hogere thumbs wilt */
-  background: #f4f4f4;       /* rustige “letterbox” achtergrond */
+  height: 220px;              /* pas aan naar smaak */
+  background: #f4f4f4;        /* neutraal vlak achter de afbeelding */
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  padding: 18px;              /* dit geeft die lucht’ */
+  box-sizing: border-box;
 }
 
-/* Afbeelding: contain = NO-CROP */
 .news-item .news-thumb img{
   width: 100%;
   height: 100%;
-  object-fit: contain;        /* <- dit voorkomt afsnijden */
+  object-fit: contain;        /* NO-CROP */
   object-position: center;
   display: block;
 }
-
 .news-content{
   padding: 24px;
   display: flex;
