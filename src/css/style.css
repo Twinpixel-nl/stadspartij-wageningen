@@ -895,8 +895,9 @@ a.team-card {
   border: 0;
   display: block;
 }
+
 /* ======================================================================
-   NIEUWS CARDS – FIXED THUMB HEIGHT (overal exact dezelfde overgang)
+   NIEUWS CARDS – DEFINITIEVE FIX (overal identieke stoplijn)
    ====================================================================== */
 
 .news-grid-full{
@@ -923,51 +924,55 @@ a.news-item-link{
   border: 1px solid #eee;
   border-radius: 12px;
   overflow: hidden;
+
   display: flex;
   flex-direction: column;
   height: 100%;
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 
-a.news-item-link:hover .news-item{
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  border-color: var(--primary-color);
-}
+/* =========================
+   THUMB — 100% geforceerd
+   ========================= */
 
-/* === THUMB: altijd dezelfde hoogte, altijd dezelfde “stoplijn” === */
 .news-item .news-thumb{
-  height: 260px !important;
-  background: #165c9c !important;
-  overflow: hidden !important;
-  position: relative !important;
+  flex: 0 0 260px;        /* voorkomt krimpen */
+  height: 260px;          /* vaste hoogte */
+  min-height: 260px;
+
+  width: 100%;
+  position: relative;
+
+  overflow: hidden;
+  background: #165c9c;
+
+  line-height: 0;         /* voorkomt inline img spacing */
 }
 
-/* Case 1: normale <img> (ook als er wrappers tussen zitten) */
+/* img volledig geforceerd */
 .news-item .news-thumb img{
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  display: block !important;
-  object-fit: cover !important;
-  object-position: center top !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center top;
 }
 
-/* Case 2: als .news-thumb zélf een background-image heeft */
-.news-item .news-thumb{
-  background-size: cover !important;
-  background-position: center top !important;
-  background-repeat: no-repeat !important;
-}
+/* =========================
+   CONTENT
+   ========================= */
 
-/* Content */
 .news-content{
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
   flex: 1;
+  gap: 12px;
 }
 
 .news-content h4{
@@ -990,13 +995,17 @@ a.news-item-link:hover .news-item{
 }
 
 .news-content .read-more{
+  margin-top: auto;
   color: var(--primary-color);
   font-weight: 700;
-  margin-top: auto;
-  align-self: flex-start;
 }
 
+/* =========================
+   RESPONSIVE
+   ========================= */
+
 @media (max-width: 768px){
+
   .news-grid-full{
     padding: 0 16px;
     gap: 20px;
@@ -1004,6 +1013,8 @@ a.news-item-link:hover .news-item{
   }
 
   .news-item .news-thumb{
+    flex: 0 0 180px;
     height: 180px;
+    min-height: 180px;
   }
 }
