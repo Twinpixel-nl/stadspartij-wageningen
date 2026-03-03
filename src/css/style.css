@@ -965,3 +965,18 @@ a.news-item-link:hover .news-item {
   border: 0;
   display: block;
 }
+
+/* Card */
+.news-item{
+  overflow: hidden;          /* zorgt dat img netjes binnen de card blijft */
+}
+
+/* Afbeelding in card */
+.news-item > img{
+  width: 100%;
+  aspect-ratio: 16 / 9;      /* kies verhouding die je wil (16/9 lijkt op je voorbeeld) */
+  height: auto;              /* aspect-ratio bepaalt de hoogte */
+  display: block;
+  object-fit: cover;         /* key: geen stretch, wel crop */
+  object-position: center;   /* focus midden */
+}
