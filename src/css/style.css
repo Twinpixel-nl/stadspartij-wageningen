@@ -937,28 +937,44 @@ a.news-item-link {
    THUMB — 100% geforceerd
    ========================= */
 
+
+/* =========================
+   THUMB —  Stijl (Vaste hoogte, altijd gelijke stoplijn)
+   ========================= */
+
 .news-item .news-thumb {
-  /* FIX 3: Vaste hoogte. Ik heb er 300px van gemaakt zodat flyers er beter oppassen, pas dit aan naar smaak */
-  flex: 0 0 300px;        
-  height: 300px;          
+  /* De exacte hoogte van het vak. Pas dit getal aan (bijv 250px of 300px) 
+     om te bepalen waar de strakke lijn moet komen */
+  height: 280px; 
+  min-height: 280px;
+  max-height: 280px;
   width: 100%;
-  position: relative;
+  
+  /* Flexbox om de afbeelding altijd strak in het midden te centreren */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Een lichte achtergrondkleur voor als de afbeelding smaller is dan het vak (zoals bij de VVD) */
+  background-color: var(--light-grey); 
+  
+  /* Zorgt dat de blauwe kleur van jouw afbeelding mooi doorloopt als je liever de partijkleur als achtergrond hebt: 
+     background-color: #004d99; (optioneel, haal de slashes weg) */
+  
+  border-bottom: 1px solid #eee; /* Geeft een duidelijke stoplijn */
   overflow: hidden;
-  background: var(--light-grey);
 }
 
-/* img volledig geforceerd */
+/* De afbeelding zelf */
 .news-item .news-thumb img {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  display: block;
   
-  /* FIX 4: object-fit cover zorgt dat hij de 300px hoogte ALTIJD precies vult */
-  object-fit: cover;
-  object-position: center top; 
+  /* HET GEHEIM: 'contain' schaalt de afbeelding zodat hij in het vak past 
+     ZONDER stukken tekst of hoofden af te snijden! */
+  object-fit: contain; 
+  object-position: center;
+  display: block;
 }
 
 /* =========================
