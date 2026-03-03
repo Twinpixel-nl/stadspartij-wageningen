@@ -895,9 +895,8 @@ a.team-card {
   border: 0;
   display: block;
 }
-
 /* ======================================================================
-   NIEUWS CARDS – DEFINITIEVE FIX (Harde uitsnede, kaarsrechte stoplijn)
+   NIEUWS CARDS – VVD STIJL (Vaste afmeting, met witruimte)
    ====================================================================== */
 
 .news-grid-full {
@@ -908,7 +907,7 @@ a.team-card {
   display: grid;
   gap: 30px;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  align-items: stretch;
+  align-items: stretch; /* Zorgt dat alle kaarten exact even hoog worden */
 }
 
 a.news-item-link {
@@ -928,35 +927,44 @@ a.news-item-link {
   flex-direction: column;
   flex: 1; 
   width: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
 /* =========================
-   THUMB — Harde lijn (Cropping)
+   THUMB — Vaste afmeting + Contain (De VVD Manier)
    ========================= */
 
 .news-item .news-thumb {
-  /* Dit getal bepaalt de harde lijn waar de afbeelding stopt en de tekst begint. */
-  flex: 0 0 280px; 
-  height: 280px; 
+  /* HET VVD GEHEIM 1: Vaste hoogte voor het vak (pas de 250px aan naar wens) */
+  flex: 0 0 250px; 
+  height: 250px; 
   width: 100%;
   
-  position: relative;
-  overflow: hidden; /* Alles wat niet in deze 280px past, 'verdwijnt' onzichtbaar */
-  border-bottom: 1px solid #eee; /* Optioneel scheidingslijntje */
+  /* HET VVD GEHEIM 2: Vul lege witruimte op met de achtergrondkleur van de kaart (wit) */
+  background-color: #ffffff; 
+  
+  border-bottom: 1px solid #eee; /* Strakke stoplijn tussen afbeelding en tekst */
+  
+  /* Zorgt dat de afbeelding altijd in het absolute midden van de 'witruimte' zweeft */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .news-item .news-thumb img {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   
-  /* HET GEHEIM: cover dwingt de afbeelding om elke pixel van het 280px vak te vullen */
-  object-fit: cover; 
+  /* HET VVD GEHEIM 3: 'contain' zorgt dat de hele poster past, zonder af te snijden */
+  object-fit: contain; 
+  object-position: center;
   
-  /* Top center zorgt dat de afbeelding vanaf de bovenkant behouden blijft, zodat titels of hoofden niet sneuvelen */
-  object-position: top center; 
   display: block;
 }
 
@@ -980,19 +988,20 @@ a.news-item-link {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  min-height: 3.2rem;
+  min-height: 3.2rem; /* Zorgt dat de tekst eronder altijd op dezelfde lijn start */
 }
 
 .news-content p {
   margin: 0;
   color: var(--medium-grey);
-  flex: 1;
+  flex: 1; /* Duwt de 'Lees meer' knop altijd strak naar de onderkant */
 }
 
 .news-content .read-more {
-  margin-top: auto; /* Zorgt dat 'Lees meer' altijd strak onderaan de kaart blijft! */
+  margin-top: auto; 
   color: var(--primary-color);
   font-weight: 700;
+  padding-top: 10px;
 }
 
 /* =========================
@@ -1006,7 +1015,8 @@ a.news-item-link {
     grid-template-columns: 1fr;
   }
   .news-item .news-thumb {
-    flex: 0 0 220px;
-    height: 220px;
+    /* Iets kleiner blok op mobiel */
+    flex: 0 0 200px;
+    height: 200px;
   }
 }
