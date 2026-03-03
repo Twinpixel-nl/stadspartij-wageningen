@@ -209,76 +209,6 @@ a.team-card {
   font-style: italic;
 }
 
-/* --- NIEUWS SECTIE & PAGINA (GECORRIGEERD) --- */
-
-/* 1. De container voor de nieuwskaarten */
-.news-grid-full {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-/* 2. De link-wrapper die de hele kaart klikbaar maakt */
-a.news-item-link {
-    text-decoration: none; /* VERWIJDER ONDERSTREPING */
-    color: inherit;        /* NEGEER STANDAARD LINK-KLEUR */
-    display: flex;         /* Zorgt dat de kaart de volledige hoogte vult */
-}
-
-/* 3. De kaart zelf (de <article>) */
-.news-item {
-    background: var(--white);
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid #eee;
-    display: flex;
-    flex-direction: column;
-    width: 100%; /* Zorgt dat de kaart de wrapper vult */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* 4. Het hover-effect (op de link-wrapper) */
-a.news-item-link:hover .news-item {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    border-color: var(--primary-color);
-}
-
-/* 5. De afbeelding */
-.news-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-/* 6. De content-div en de tekstelementen */
-.news-content {
-    padding: 25px;
-    flex-grow: 1; /* Zorgt dat de content de resterende ruimte vult */
-    display: flex;
-    flex-direction: column;
-}
-
-.news-content h4 {
-    margin-top: 0;
-    font-size: 1.3rem;
-    color: var(--dark-grey); /* ZEKER WETEN DE JUISTE KLEUR */
-}
-
-.news-content p {
-    flex-grow: 1;
-    color: var(--medium-grey); /* ZEKER WETEN DE JUISTE KLEUR */
-    margin-bottom: 20px;
-}
-
-/* 7. De "Lees meer" tekst (nu een <span>) */
-.news-content .read-more {
-    color: var(--primary-color); /* JOUW RODE KLEUR */
-    font-weight: 700;
-    align-self: flex-start;
-    margin-top: auto; /* Duwt de link naar de bodem */
-}
-/* ... (alle bestaande CSS-code) ... */
 
 /* --- Dropdown Navigatie --- */
 .main-nav .dropdown {
@@ -966,20 +896,89 @@ a.news-item-link:hover .news-item {
   display: block;
 }
 
-.news-item{
-  overflow: hidden;
+/* ==========================================================================
+   Nieuws / Blogs cards (clickable + strak)
+   Plak onderaan je CSS
+   ========================================================================== */
+
+/* Grid container (3 kolommen desktop) */
+.news-grid-full {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
-.news-item > img{
+/* Hele kaart klikbaar */
+a.news-item-link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* simpeler dan flex; de card regelt zelf layout */
+}
+
+/* Card */
+.news-item {
+  background: var(--white);
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* Hover op de link wrapper */
+a.news-item-link:hover .news-item {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border-color: var(--primary-color);
+}
+
+/* Afbeelding: wel cover, maar focus op bovenkant zodat banners niet 'half' lijken */
+.news-item img {
   width: 100%;
-  height: 220px;       /* desktop */
+  height: 220px;           /* desktop */
   display: block;
   object-fit: cover;
-  object-position: center;
+  object-position: top center;
 }
 
-@media (max-width: 768px){
-  .news-item > img{
-    height: 180px;     /* mobiel */
+/* Content */
+.news-content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.news-content h4 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--dark-grey);
+}
+
+.news-content p {
+  margin: 0;
+  color: var(--medium-grey);
+  flex: 1;
+}
+
+/* Lees meer */
+.news-content .read-more {
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-top: 6px;
+  align-self: flex-start;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .news-grid-full {
+    grid-template-columns: 1fr;
+  }
+
+  .news-item img {
+    height: 180px;         /* mobiel */
   }
 }
