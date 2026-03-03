@@ -935,8 +935,7 @@ a.news-item-link:hover .news-item{
   border-color: var(--primary-color);
 }
 
-
-/* === HARD FIX: thumb hoogte is heilig, img vult altijd exact === */
+/* === THUMB: altijd dezelfde hoogte, altijd dezelfde “stoplijn” === */
 .news-item .news-thumb{
   height: 260px !important;
   background: #165c9c !important;
@@ -944,16 +943,22 @@ a.news-item-link:hover .news-item{
   position: relative !important;
 }
 
-/* forceer img absolute zodat niks ooit "korter" wordt */
-.news-item .news-thumb > img{
+/* Case 1: normale <img> (ook als er wrappers tussen zitten) */
+.news-item .news-thumb img{
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
   display: block !important;
-
   object-fit: cover !important;
   object-position: center top !important;
+}
+
+/* Case 2: als .news-thumb zélf een background-image heeft */
+.news-item .news-thumb{
+  background-size: cover !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
 }
 
 /* Content */
