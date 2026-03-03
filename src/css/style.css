@@ -896,17 +896,26 @@ a.team-card {
   display: block;
 }
 
+
 /* ==========================================================================
-   Nieuws / Blogs cards (NO-CROP versie)
-   - Niks wordt afgesneden
+   Nieuws / Blogs cards (NO-CROP + VVD-achtige sizing)
+   - Niks wordt afgesneden (contain)
+   - Grid blijft binnen normale contentbreedte
    - Cards blijven netjes gelijk
-   - Eventuele lege ruimte krijgt een rustige achtergrond
    ========================================================================== */
 
 .news-grid-full{
+  width: 100%;
+  max-width: 1100px;      /* zelfde orde als je .container */
+  margin: 0 auto;
+  padding: 0 20px;
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+
+  /* VVD-achtig: responsive, maar nooit mega */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
 }
 
 a.news-item-link{
@@ -932,25 +941,26 @@ a.news-item-link:hover .news-item{
   border-color: var(--primary-color);
 }
 
-/* new-style thumbs: niks afsnijden, wel consistente cards */
+/* Thumbnail wrapper: vaste hoogte, rustige achtergrond, geen crop */
 .news-item .news-thumb{
   width: 100%;
-  height: 180px;     
-  background: #f4f4f4;        /* neutraal vlak achter de afbeelding */
+  height: 220px;           /* tweak: 180–260 */
+  background: #f4f4f4;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 18px;              /* dit geeft die lucht’ */
+  padding: 18px;
   box-sizing: border-box;
 }
 
 .news-item .news-thumb img{
   width: 100%;
   height: 100%;
-  object-fit: contain;        /* NO-CROP */
+  object-fit: contain;     /* NO-CROP */
   object-position: center;
   display: block;
 }
+
 .news-content{
   padding: 24px;
   display: flex;
@@ -961,7 +971,7 @@ a.news-item-link:hover .news-item{
 
 .news-content h4{
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   color: var(--dark-grey);
 }
 
@@ -980,6 +990,13 @@ a.news-item-link:hover .news-item{
 
 @media (max-width: 768px){
   .news-grid-full{
+    padding: 0 16px;
+    gap: 20px;
     grid-template-columns: 1fr;
+  }
+
+  .news-item .news-thumb{
+    height: 180px;
+    padding: 14px;
   }
 }
