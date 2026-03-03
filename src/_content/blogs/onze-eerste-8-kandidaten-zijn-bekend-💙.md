@@ -1,7 +1,7 @@
 ---
 title: Onze eerste 8 kandidaten zijn bekend!💙
 date: 2025-12-12T15:51:37.519Z
-thumbnail: /images/uploads/groepsfoto.png
+thumbnail: /images/uploads/ontwerp-zonder-titel.png
 excerpt: "💙 Stadspartij Wageningen wil de komende raadsperiode werken aan een
   leefbare, bereikbare en gastvrije stad. "
 ---
