@@ -897,88 +897,90 @@ a.team-card {
 }
 
 /* ==========================================================================
-   Nieuws / Blogs cards (clickable + strak)
-   Plak onderaan je CSS
+   Nieuws / Blogs cards (NO-CROP versie)
+   - Niks wordt afgesneden
+   - Cards blijven netjes gelijk
+   - Eventuele lege ruimte krijgt een rustige achtergrond
    ========================================================================== */
 
-/* Grid container (3 kolommen desktop) */
-.news-grid-full {
+.news-grid-full{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
 
-/* Hele kaart klikbaar */
-a.news-item-link {
+a.news-item-link{
   text-decoration: none;
   color: inherit;
-  display: block; /* simpeler dan flex; de card regelt zelf layout */
+  display: block;
 }
 
-/* Card */
-.news-item {
+.news-item{
   background: var(--white);
   border: 1px solid #eee;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   height: 100%;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 
-/* Hover op de link wrapper */
-a.news-item-link:hover .news-item {
+a.news-item-link:hover .news-item{
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   border-color: var(--primary-color);
 }
 
-/* Afbeelding: wel cover, maar focus op bovenkant zodat banners niet 'half' lijken */
-.news-item img {
+/* Image wrapper: zorgt voor vaste verhouding zonder croppen */
+.news-item .news-thumb{
   width: 100%;
-  height: 220px;           /* desktop */
-  display: block;
-  object-fit: cover;
-  object-position: top center;
+  aspect-ratio: 16 / 9;      /* pas aan naar 4/3 als je hogere thumbs wilt */
+  background: #f4f4f4;       /* rustige “letterbox” achtergrond */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-/* Content */
-.news-content {
-  padding: 25px;
+/* Afbeelding: contain = NO-CROP */
+.news-item .news-thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;        /* <- dit voorkomt afsnijden */
+  object-position: center;
+  display: block;
+}
+
+.news-content{
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   flex: 1;
 }
 
-.news-content h4 {
+.news-content h4{
   margin: 0;
   font-size: 1.3rem;
   color: var(--dark-grey);
 }
 
-.news-content p {
+.news-content p{
   margin: 0;
   color: var(--medium-grey);
   flex: 1;
 }
 
-/* Lees meer */
-.news-content .read-more {
+.news-content .read-more{
   color: var(--primary-color);
   font-weight: 700;
   margin-top: 6px;
   align-self: flex-start;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .news-grid-full {
+@media (max-width: 768px){
+  .news-grid-full{
     grid-template-columns: 1fr;
-  }
-
-  .news-item img {
-    height: 180px;         /* mobiel */
   }
 }
