@@ -147,21 +147,22 @@ document.addEventListener('DOMContentLoaded', function() {
       const pageItems = data.slice(startIndex, endIndex);
 
       // (De code voor het vullen van de nieuwsberichten blijft hetzelfde)
-      pageItems.forEach(item => {
-        container.innerHTML += `
-          <a href="${item.path}" class="news-item-link">
-            <article class="news-item">
-<div class="news-thumb">
-  <img src="${item.thumbnail || 'https://via.placeholder.com/400x250'}" alt="${item.title}">
-</div>
-             <div class="news-content">
-                <h4>${item.title}</h4>
-                <p>${item.excerpt}</p>
-                <span class="read-more">Lees meer →</span>
-              </div>
-            </article>
-          </a>`;
-      });
+pageItems.forEach(item => {
+  container.innerHTML += `
+    <a href="${item.path}" class="news-item-link">
+      <article class="news-item">
+        <div class="news-thumb">
+          <img src="${item.thumbnail || 'https://via.placeholder.com/800x500'}" alt="${item.title || 'Nieuwsbericht'}">
+        </div>
+
+        <div class="news-content">
+          <h4>${item.title}</h4>
+          <p>${item.excerpt}</p>
+          <span class="read-more">Lees meer →</span>
+        </div>
+      </article>
+    </a>`;
+});
 
       // Paginanavigatie
       const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
