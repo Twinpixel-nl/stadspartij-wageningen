@@ -935,7 +935,7 @@ a.news-item-link:hover .news-item{
 /* new-style thumbs: niks afsnijden, wel consistente cards */
 .news-item .news-thumb{
   width: 100%;
-  height: 220px;              /* pas aan naar smaak */
+  height: 180px;     
   background: #f4f4f4;        /* neutraal vlak achter de afbeelding */
   display: flex;
   align-items: center;
